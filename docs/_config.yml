@@ -1,0 +1,5 @@
+theme: jekyll-theme-minimal
+title: "ARTA"
+description: "Automatic Requirement Testability Analyzer"
+logo: "./figs/logo.png"
+show_downloads: "true"
