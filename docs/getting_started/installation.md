@@ -1,36 +1,5 @@
-# ARTA
+# Installation
 
-![ARTA_logo](docs/figs/logo.png)
-
-## Automatic Requirement Testability Analyzer
-
-Software testability is the propensity of software artifact to reveal its existing defects. Software requirements are crucial artifacts in developing software. Requirements specifications are used in both the functional and acceptance testing to ensure that a program meets its requirements. A testable requirement increases the effectiveness of testing while decreasing the cost and time. In this paper, we define requirement testability in terms of requirements smells and propose a measuring method.
-
-
-## Demo
-
-ARTA is a research project at [IUST Reverse Engineering Laboratory](http://reverse.iust.ac.ir/).
-An online demo of ARAT is available on 
-[http://arta.iust-parsa.ir/](http://arta.iust-parsa.ir/).
-You can log-in with following credential:
-
- * Demo username: User
- * Demo password: arta@IUST
-
-and watch the examples requirements.  
-
-
-### ARTA requirement analyzer module
-
-![ARTA Demo 1](./docs/figs/ARTA_screenshot1.png)
-
-
-### ARTA requirement smell labeling module
-
-![ARTA Demo 2](./docs/figs/ARTA_screenshot2.png)
-
-
-## Getting started
 
 ### Prerequisites
 
@@ -121,18 +90,3 @@ insert dataset the using.
 ```bash
 python manage.py insert_date <location of json file> <a project name for this dataset>
 ```
-
-## Used Datasets
-- [Dataset 1 (available in pdf,doc,xml formats - xml versions used)](http://fmt.isti.cnr.it/nlreqdataset/)
-  
-- [Dataset 2 (available in txt format - needs vpn)](https://www.kaggle.com/iamsouvik/software-requirements-dataset/data)
-
-
-## Release date
-
-The **full version of source code** will be available as soon as the *relevant paper(s) are published*.
-
-## Read more
-
-Visit project website at [https://m-zakeri.github.io/ARTA](https://m-zakeri.github.io/ARTA)
-
