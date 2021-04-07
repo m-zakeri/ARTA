@@ -255,15 +255,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-arta-requirement-analyzer-module" class="md-nav__link">
-    2.1 ARTA requirement analyzer module
+  <a href="#21-requirement-analyzer" class="md-nav__link">
+    2.1 Requirement analyzer
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-arta-requirement-smell-labeling-module" class="md-nav__link">
-    2.2. ARTA requirement smell labeling module
+  <a href="#22-requirement-smell-labeling-module" class="md-nav__link">
+    2.2. Requirement smell labeling module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-data-model" class="md-nav__link">
+    2.3 Data model
   </a>
   
 </li>
@@ -449,15 +456,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-arta-requirement-analyzer-module" class="md-nav__link">
-    2.1 ARTA requirement analyzer module
+  <a href="#21-requirement-analyzer" class="md-nav__link">
+    2.1 Requirement analyzer
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-arta-requirement-smell-labeling-module" class="md-nav__link">
-    2.2. ARTA requirement smell labeling module
+  <a href="#22-requirement-smell-labeling-module" class="md-nav__link">
+    2.2. Requirement smell labeling module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-data-model" class="md-nav__link">
+    2.3 Data model
   </a>
   
 </li>
@@ -502,13 +516,16 @@
 <p><strong>Morteza Zakeri</strong>†</p>
 <p>† Ph.D. Student, Iran University of Science and Technology, Tehran, Iran (m-zakeri@live.com).</p>
 <p>Version 0.1.2 (20, March 2021) ├ Download [PDF] version</p>
-<p><strong>Abstract—</strong> Software testability is the propensity of software artifact to reveal its existing defects. Software requirements are crucial artifacts in developing software. Requirements specifications are used in both the functional and acceptance testing to ensure that a program meets its requirements. A testable requirement increases the effectiveness of testing while decreasing the cost and time. In this paper, we define requirement testability in terms of requirements smells and propose a measuring method. </p>
+<p><strong>Abstract—</strong> Software testability is the propensity of software artifact to reveal its existing defects. Software requirements are crucial artifacts in developing software. Requirements specifications are used in both the functional and acceptance testing to ensure that a program meets its requirements. 
+A testable requirement increases the effectiveness of testing while decreasing the cost and time.
+In this project, we define requirement testability in terms of requirements smells and propose a measuring method to compute requirement testability. </p>
 <p><strong>Index Terms:</strong> Software requirement, requirement testability, requirement smells, expert system</p>
 <h2 id="1-introduction">1 Introduction</h2>
-<p>The achievement of the quality of software requirements is the first step towards software quality. Natural language is the main representation means of industrial requirements documents, which implies that requirements documents are inherently ambiguous. A Requirements Smell is an indicator of a  quality violation, which may lead to a defect, with a concrete location and a concrete detection mechanism.
-Unfortunately, there is no publicly available tool and benchmark to detect requirement smells and measure the requirements quality. ARTA is a research project at <a href="http://reverse.iust.ac.ir/">IUST Reverse Engineering Laboratory</a> aimed at detecting requirement smells and measuring requirement testability in all kinds of requirements expressed in natural languages.</p>
+<p>The achievement of the quality of software requirements is the first step towards software quality. Natural language is the main representation means of industrial requirements documents, which implies that requirements documents are inherently ambiguous. A Requirements Smell is an indicator of a  quality violation, which may lead to a defect, with a concrete location and a concrete detection mechanism.</p>
+<p>Unfortunately, there is no publicly available tool and benchmark to detect requirement smells and measure the requirements quality. ARTA is a research project at <a href="http://reverse.iust.ac.ir/">IUST Reverse Engineering Laboratory</a> aimed at detecting requirement smells and measuring requirement testability in all kinds of requirements expressed in natural languages.</p>
 <h2 id="2-tool-support">2 Tool support</h2>
-<p>An online demo of ARAT is available on 
+<p>ARTA is a web-based software requirement analysis tool using the state-of-the-art natural language processing (NLP) and statistical machine learning techniques to analyze the software requirement.<br />
+An online demo of ARAT is available on 
 <a href="http://arta.iust-parsa.ir/">http://arta.iust-parsa.ir/</a>.
 You can log-in with following credential:</p>
 <ul>
@@ -516,10 +533,19 @@ You can log-in with following credential:</p>
 <li>Demo password: arta@IUST</li>
 </ul>
 <p>and watch the examples requirements.  </p>
-<h3 id="21-arta-requirement-analyzer-module">2.1 ARTA requirement analyzer module</h3>
+<h3 id="21-requirement-analyzer">2.1 Requirement analyzer</h3>
+<p>Requirement analyzer detects smelly words in each requirement, recognize their type, and provides a list of smelly words. The web interface also highlights smelly words in the requirement text.</p>
+<p>Figure 1 shows ARTA requirement smell analyzer and detector. </p>
 <p><img alt="ARTA Demo 1" src="figs/ARTA_screenshot1.png" /></p>
-<h3 id="22-arta-requirement-smell-labeling-module">2.2. ARTA requirement smell labeling module</h3>
+<p><em>Figure 1: Requirement smell detector in ARTA</em></p>
+<h3 id="22-requirement-smell-labeling-module">2.2. Requirement smell labeling module</h3>
+<p>ARAT web interface also provides an ability to label each requirement with corresponding smells. Figure 2 shows ARTA requirement labeling module.</p>
 <p><img alt="ARTA Demo 2" src="figs/ARTA_screenshot2.png" /></p>
+<p><em>Figure 2: Requirement smell labeling in ARTA</em></p>
+<h3 id="23-data-model">2.3 Data model</h3>
+<p>Figure 3 shows ARTA database ERD model. All projects and their requirements are kept in a MySQL database.</p>
+<p><img alt="ARTA data model" src="figs/ARTA_db_model_v1.png" /></p>
+<p><em>Figure 3: ARTA data model</em></p>
 <h2 id="3-release-date">3 Release date</h2>
 <p>The full version of source code will be available as soon as the relevant paper(s) are published.</p>
 <h2 id="4-faq">4 FAQ</h2>
