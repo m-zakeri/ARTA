@@ -1,10 +1,12 @@
-# ARTA
+# ARTA: Automatic Requirement Testability Analyzer
 
 ![ARTA_logo](docs/figs/logo.png)
 
-## Automatic Requirement Testability Analyzer
 
-Software testability is the propensity of software artifact to reveal its existing defects. Software requirements are crucial artifacts in developing software. Requirements specifications are used in both the functional and acceptance testing to ensure that a program meets its requirements. A testable requirement increases the effectiveness of testing while decreasing the cost and time. In this paper, we define requirement testability in terms of requirements smells and propose a measuring method.
+Software testability is the propensity of software artifact to reveal its existing defects. 
+Software requirements are crucial artifacts in developing software. Requirements specifications are used in both the functional and acceptance testing to ensure that a program meets its requirements. 
+A testable requirement increases the effectiveness of testing while decreasing the cost and time. In this project, we define requirement testability in terms of requirements smells and propose a measuring method.
+More information are available in the [project documentation website](https://m-zakeri.github.io/ARTA).
 
 
 ## Demo
