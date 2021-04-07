@@ -1,0 +1,14 @@
+Django==3.0.7
+mysqlclient==1.4.6
+django-widget-tweaks==1.4.8
+textblob==0.15.3
+dominate==2.5.1
+bs4==0.0.1
+lxml==4.5.1
+seaborn==0.10.1
+matplotlib==3.3.0
+pandas==1.0.5
+XlsxWriter==1.2.9
+squarify==0.4.3
+xlrd==1.2.0
+djangorestframework===3.11.1
