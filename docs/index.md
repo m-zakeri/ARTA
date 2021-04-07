@@ -43,7 +43,8 @@ Figure 1 shows ARTA requirement smell analyzer and detector.
 
 *Figure 1: Requirement smell detector in ARTA*
 
-### 2.2. Requirement smell labeling module
+
+### 2.2. Labeling module
 
 ARAT web interface also provides an ability to label each requirement with corresponding smells. Figure 2 shows ARTA requirement labeling module.
 
