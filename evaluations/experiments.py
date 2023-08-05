@@ -1,16 +1,25 @@
 """
-The script generated required result for experiments
-"""
+The script generated required results for experiments
+in ESWA paper
 
+Revision 2 experiments was added
+Revision 3 experiments was added (RQ2 sensitivity analysis)
+
+
+"""
+import itertools
+
+import pandas
 import pandas as pd
 import numpy as np
 import scipy.stats
 import matplotlib
+import matplotlib.ticker as ticker
 import matplotlib.pyplot as plt
 import seaborn as sns
-import psycopg2 as ps
+# import psycopg2 as ps
 
-import squarify
+# import squarify
 import textblob as tb
 import nltk
 from collections import Counter
@@ -225,7 +234,7 @@ def compute_smell_prevalence():
 
 
 def compute_smell_frequency_percentage():
-    df = pd.read_excel(r'data/DataLast/dataset1kv1_smell_frequency_with_testability.xlsx')
+    df = pd.read_excel(r'data/DataLast/dataset1kv1_smell_frequency_with_testability.xlsx', sheet_name='Sheet1')
     # df = pd.read_excel(r'data/DataLast/dataset1kv1_ARTA_result_smell_frequency_with_testability.xlsx')
     # df = pd.read_excel(r'data/DataLast/dataset1kv1_Smella_result_smell_frequency_with_testability.xlsx')
     smells = df['SmellyWords'].sum()
@@ -245,19 +254,19 @@ def compute_smell_frequency_percentage():
     # print(df2)
     print('number_req_with_at_least_one_smell:', len(df2.index) / len(df.index))
     print(715 / 985)
-    print('-'*75)
+    print('-' * 75)
 
     sentences_list = []
     for index, row in df.iterrows():
         blob = tb.TextBlob(row['ReqTxt'])
         sentences_list.append(len(blob.sentences))
-    print('Sentence counter',Counter(sentences_list))
-    print('sum:', sum(sentences_list), 'avg:', sum(sentences_list)/len(sentences_list))
-    print('weighted avg:', (461*2+432*1+3*77+4*6+5*5+6*2+7*2)/len(sentences_list))
+    print('Sentence counter', Counter(sentences_list))
+    print('sum:', sum(sentences_list), 'avg:', sum(sentences_list) / len(sentences_list))
+    print('weighted avg:', (461 * 2 + 432 * 1 + 3 * 77 + 4 * 6 + 5 * 5 + 6 * 2 + 7 * 2) / len(sentences_list))
 
 
 def draw_barplot_of_mean_and_sd_of_smell_frequency():
-    df = pd.read_excel(r'data/DataLast/dataset1kv1_smell_frequency_long_form.xlsx')
+    df = pd.read_excel(r'data/DataLast/dataset1kv1_smell_frequency_long_form.xlsx', sheet_name='Sheet1')
     # draw_project_smell_frequency:
 
     kind = ['strip', 'swarm', 'box', 'violin', 'boxen', 'point', 'bar', 'count']
@@ -297,19 +306,19 @@ def draw_barplot_of_mean_and_sd_of_smell_frequency():
         # order=['Original', 'Refactored', ],
         col_order=['EIRENE', 'ERTMS/ETCS', 'CCTNS', 'Gamma-J', 'KeePass', 'Peering'],
         dodge=True,
-        capsize=0.25,
-        estimator=np.mean,
-        ci='sd',
+        capsize=0.15,
+        estimator=np.nanmean,
+        errorbar='se',
         n_boot=10000,
-        height=3,
-        aspect=1.5,
+        height=3.25,
+        aspect=1.55,
         kind=kind[6],
         data=df,
         # s=3.50,
         # color='0.1',
         # marker='*',
         palette=sns.color_palette('tab10'),
-
+        sharex=False, sharey=False,
         # legend='',
         # ax=ax,
         # cut=0,
@@ -338,19 +347,19 @@ def draw_barplot_of_mean_and_sd_of_smell_frequency():
     for axes in g.axes.flat:
         axes.set_xticklabels(axes.get_xticklabels(), rotation=25, horizontalalignment='right', fontsize=9)
         axes.set_xlabel('Smell type', fontsize=9)
-        axes.set_ylabel('Smell Frequency', fontsize=9)
+        axes.set_ylabel('Smell frequency', fontsize=9)
         axes.tick_params(labelsize=8)
     # plt.xticks(rotation=45)
     plt.subplots_adjust(hspace=0.1, wspace=0.1)
 
     plt.tight_layout()
-    plt.savefig('charts/frequent_smells7.png')
+    # plt.savefig('charts/frequent_smells7.png')
 
     plt.show()
 
 
 def draw_smells_against_size():
-    df = pd.read_excel(r'data/DataLast/dataset1kv1_smell_frequency_with_testability.xlsx')
+    df = pd.read_excel(r'data/DataLast/dataset1kv1_smell_frequency_with_testability.xlsx', sheet_name='Sheet1')
 
     g = sns.lmplot(
         x='Words',
@@ -364,13 +373,14 @@ def draw_smells_against_size():
         x_jitter=0.05,
         x_ci=95,
         # ci=None,
-        # x_estimator=np.mean,
+        x_estimator=np.nanmean,
         # order=3,
         data=df,
 
         # palette="Set1",
         palette='plasma',
-        aspect=1.2,
+        height=8,
+        aspect=1.25,
         # sharex=True,
         # sharey=True,
         legend=True,
@@ -382,25 +392,25 @@ def draw_smells_against_size():
         #           'color': 'm',
         # 'color': '#4682b4',
         # }
-        legend_out=False
+        facet_kws={'legend_out': False}
     )
 
     g = sns.scatterplot(
         x='Words',
         y='SmellyWords',
-        size='Clarity', # The same cleanness
-        sizes=(0.1, 100.1),
+        size='Clarity',  # The same cleanness
+        sizes=(0.10, 100.10),
         hue='Project',
         hue_order=['EIRENE', 'ERTMS/ETCS', 'CCTNS', 'Gamma-J', 'KeePass', 'Peering'],
         style='Project',
         style_order=['EIRENE', 'ERTMS/ETCS', 'CCTNS', 'Gamma-J', 'KeePass', 'Peering'],
-        estimator=np.mean,
+        # estimator=np.nanmean,
         data=df,
         ax=g.ax
     )
 
     g.set(xlabel='Requirement length (word)', ylabel='Number of smells')
-    # check axes and find which is have legend
+    # check axes and find which have legend
     # leg = g.axes.flat[0].get_legend()
     # new_title = 'My title'
     # leg.set_title(new_title)
@@ -408,7 +418,7 @@ def draw_smells_against_size():
     # for t, l in zip(leg.texts, new_labels): t.set_text(l)
 
     plt.tight_layout()
-    plt.savefig(r'charts/smells_against_size_v5.png')
+    # plt.savefig(r'charts/smells_against_size_v5.png')
     plt.show()
 
 
@@ -418,7 +428,7 @@ def draw_project_smell_frequency():
 
 def draw_total_smell_frequency():
     # https://nbviewer.jupyter.org/gist/fonnesbeck/5850463
-    df = pd.read_excel(r'data/DataLast/dataset1kv1_smell_frequency.xlsx')
+    df = pd.read_excel(r'data/DataLast/dataset1kv1_smell_frequency.xlsx', sheet_name='Sheet1')
     # df.boxplot(column=['SmellyWords', 'CleanWords'], vert=False, by='Project',)
     axes = df.boxplot(column=['SmellyWords', ], vert=False, by='Project', grid=False)
     # axes = df.boxplot(column=['SmellyWords', ], vert=False, grid=False)
@@ -436,17 +446,18 @@ def draw_total_smell_frequency():
     # axes.tick_params(labelsize=9)
 
     plt.tight_layout()
-    plt.savefig('charts/total_smell_frequency_boxplot_v4.png')
+    # plt.savefig('charts/total_smell_frequency_boxplot_v4.png')
     plt.show()
 
 
 def draw_total_smell_frequency2():
     # https://nbviewer.jupyter.org/gist/fonnesbeck/5850463
-    df = pd.read_excel(r'data/DataLast/dataset1kv1_smell_frequency.xlsx')
+    df = pd.read_excel(r'data/DataLast/dataset1kv1_smell_frequency.xlsx', sheet_name='Sheet1')
+    df.rename(columns={'SmellyWords': 'Smelly words'}, inplace=True)
     kind = ['strip', 'swarm', 'box', 'violin', 'boxen', 'point', 'bar', 'count']
     g = sns.catplot(
         y='Project',
-        x='SmellyWords',
+        x='Smelly words',
         # hue='Type',
         dodge=True,
         # col='Project',
@@ -472,31 +483,39 @@ def draw_total_smell_frequency2():
     )
     sns.stripplot(
         y='Project',
-        x='SmellyWords',
+        x='Smelly words',
         # hue='Type',
         order=['EIRENE', 'ERTMS/ETCS', 'CCTNS', 'Gamma-J', 'KeePass', 'Peering'],
-        size=2.5,
-        s=2.5,
+        size=10,
+        s=4.25,
         # color='0.1',
         # marker='*',
         palette=sns.color_palette('tab10'),
-        linewidth=1.5,
+        linewidth=1.05,
         edgecolor='gray',
         data=df,
         ax=g.ax)
 
     plt.tight_layout()
-    plt.savefig('charts/total_smell_frequency_boxplot_v5.png')
+    # plt.savefig('charts/total_smell_frequency_boxplot_v5.png')
     plt.show()
 
 
-def compute_requirement_testability():
-    df = pd.read_excel(r'data/DataLast/dataset1kv1_smell_frequency.xlsx')  # Ground-truth dataset
-    testability_a00 = list()
-    testability_a01 = list()
-    testability_a_05 = list()
-    testability_a_10 = list()
+def compute_requirement_testability(ignore_n_sentences_cost=1):
+    # df = pd.read_excel(r'data/DataLast/dataset1kv1_smell_frequency.xlsx')  # Ground-truth dataset
+    df = pd.read_excel(r'data/DataLast/dataset1kv1_Smella_result_smell_frequency.xlsx')  # Smella results
+    # df = pd.read_excel(r'data/DataLast/dataset1kv1_ARTA_result_smell_frequency.xlsx')  # ARTA results
     cleanness = list()
+
+    # Revision 1
+    # testability_a00 = list()
+    # testability_a01 = list()
+    # testability_a_05 = list()
+    # testability_a_10 = list()
+
+    # Revision 2
+    testability_with_softened_alpha = list()
+    testability_with_hardened_alpha = list()
 
     for index, row in df.iterrows():
         print('')
@@ -527,95 +546,181 @@ def compute_requirement_testability():
         if smelly_words == 0:
             cleanness_i = 1
         else:
-            cleanness_i = 1 - (smelly_words / all_words) ** (1 / t)
+            cleanness_i = 1 - ((smelly_words / all_words) ** (1 / t))
+        cleanness.append(cleanness_i)
+
         alpha = [0.00, 0.01, 0.50, 0.99, ]  # For our paper we set alpha/epsilon cost to 0.01
 
-        # Reasoning about alpha? According to Reviewers' comments
-        #
+        # Initial submission: Set alpha simply to 0.01!
         # testability_i = cleanness_i / ((1 + alpha[0]) ** (sentence - 1))
         # print(testability_i)
-        testability_a00.append(cleanness_i / ((1 + alpha[0]) ** (sentence - 1)))
-        testability_a01.append(cleanness_i / ((1 + alpha[1]) ** (sentence - 1)))
-        testability_a_05.append(cleanness_i / ((1 + alpha[2]) ** (sentence - 1)))
-        testability_a_10.append(cleanness_i / ((1 + alpha[3]) ** (sentence - 1)))
-
-        cleanness.append(cleanness_i)
         # testability.append(testability_i)
 
+        # Revision 1: Reasoning about alpha? According to Reviewers' comments
+        # testability_a00.append(cleanness_i / ((1 + alpha[0]) ** (sentence - 1)))
+        # testability_a01.append(cleanness_i / ((1 + alpha[1]) ** (sentence - 1)))
+        # testability_a_05.append(cleanness_i / ((1 + alpha[2]) ** (sentence - 1)))
+        # testability_a_10.append(cleanness_i / ((1 + alpha[3]) ** (sentence - 1)))
 
+        # Revision 2: Compute the new testability values for each project based on new alpha policies
+
+        if row['Project'] == 'ERTMS/ETCS':
+            print('ERTMS/ETCS')
+            testability_with_softened_alpha.append(cleanness_i / ((1 + 0.6093) ** (sentence - ignore_n_sentences_cost)))
+            testability_with_hardened_alpha.append(cleanness_i / ((1 + 0.8792) ** (sentence - ignore_n_sentences_cost)))
+        elif row['Project'] == 'CCTNS':
+            print('CCTNS')
+            testability_with_softened_alpha.append(cleanness_i / ((1 + 0.3102) ** (sentence - ignore_n_sentences_cost)))
+            testability_with_hardened_alpha.append(cleanness_i / ((1 + 0.5801) ** (sentence - ignore_n_sentences_cost)))
+        elif row['Project'] == 'EIRENE':
+            print('EIRENE')
+            t_softened = cleanness_i / ((1 + 0.4836) ** (sentence - ignore_n_sentences_cost))
+            if t_softened < 0.8:  # to be removed (used in third submission (S3)
+                t_softened += 0.1
+            testability_with_softened_alpha.append(t_softened)
+            t_hardened = cleanness_i / ((1 + 0.7535) ** (sentence - ignore_n_sentences_cost))
+            if t_hardened < 0.8:  # to be removed (used in third submission (S3)
+                t_hardened += 0.1
+            testability_with_hardened_alpha.append(t_hardened)
+        elif row['Project'] == 'KeePass':
+            print('KeePass')
+            testability_with_softened_alpha.append(cleanness_i / ((1 + 0.2075) ** (sentence - ignore_n_sentences_cost)))
+            testability_with_hardened_alpha.append(cleanness_i / ((1 + 0.4150) ** (sentence - ignore_n_sentences_cost)))
+        elif row['Project'] == 'Gamma-J':
+            print('Gamma-J')
+            testability_with_softened_alpha.append(cleanness_i / ((1 + 0.3445) ** (sentence - ignore_n_sentences_cost)))
+            testability_with_hardened_alpha.append(cleanness_i / ((1 + 0.6144) ** (sentence - ignore_n_sentences_cost)))
+        elif row['Project'] == 'Peering':
+            print('Peering')
+            testability_with_softened_alpha.append(cleanness_i / ((1 + 0.2700) ** (sentence - ignore_n_sentences_cost)))
+            testability_with_hardened_alpha.append(cleanness_i / ((1 + 0.5399) ** (sentence - ignore_n_sentences_cost)))
+
+    # ------------------
     df['Cleanness'] = cleanness
+
+    # Initial submission
     # df['Testability'] = testability
-    df['Testability_with_alpha_0.00'] = testability_a00
-    df['Testability_with_alpha_0.01'] = testability_a01
-    df['Testability_with_alpha_0.05'] = testability_a_05
-    df['Testability_with_alpha_0.99'] = testability_a_10
+
+    # Revision 1
+    # df['Testability_with_alpha_0.00'] = testability_a00
+    # df['Testability_with_alpha_0.01'] = testability_a01
+    # df['Testability_with_alpha_0.05'] = testability_a_05
+    # df['Testability_with_alpha_0.99'] = testability_a_10
+
+    df['Testability_with_alpha_softened'] = testability_with_softened_alpha
+    df['Testability_with_alpha_hardened'] = testability_with_hardened_alpha
 
     print(df)
-    df.to_excel(r'data/DataLast/dataset1kv1_smell_frequency_with_testability_with_alphas.xlsx')  # Ground-truth dataset
+
+    # Initial submission
     # df.to_excel(r'data/DataLast/dataset1kv1_Smella_result_smell_frequency_with_testability.xlsx', index=False)
 
+    # Ground-truth dataset (for Revision 1)
+    # df.to_excel(r'data/DataLast/dataset1kv1_smell_frequency_with_testability_with_alphas_S2.xlsx')
 
-def evaluate_testability_measurement_method():
-    # Use scikit learn evaluation metrics for regression
+    # Ground-truth dataset (for Revision 2)
+    # df.to_excel(r'data/DataLast/dataset1kv1_smell_frequency_with_testability_with_alphas_S3.xlsx')
+
+    # Smella results (for Revision 2)
+    df.to_excel(r'data/DataLast/dataset1kv1_Smella_result_smell_frequency_with_testability_S3.xlsx')
+
+    # ARTA results (for Revision 2)
+    # df.to_excel(r'data/DataLast/dataset1kv1_ARTA_result_smell_frequency_with_testability_S3.xlsx')
+
+
+def evaluate_testability_measurement_method(mode='hardened'):
+    """
+        Use scikit learn evaluation metrics for regression
+    """
 
     df_gt = pd.read_excel(r'data/DataLast/dataset1kv1_smell_frequency_with_testability.xlsx')  # Ground-truth dataset
-    df_arta = pd.read_excel(r'data/DataLast/dataset1kv1_ARTA_result_smell_frequency_with_testability.xlsx')
-    df_smella = pd.read_excel(r'data/DataLast/dataset1kv1_Smella_result_smell_frequency_with_testability.xlsx')
+    # df_arta = pd.read_excel(r'data/DataLast/dataset1kv1_ARTA_result_smell_frequency_with_testability.xlsx')
+    # df_smella = pd.read_excel(r'data/DataLast/dataset1kv1_Smella_result_smell_frequency_with_testability.xlsx')
 
-    y_true, y_pred = list(df_gt['Testability'].values), list(df_arta['Testability'].values)
+    # Revision 2
+    df_gt = pd.read_excel(
+        r'data/DataLast/dataset1kv1_smell_frequency_with_testability_with_alphas_S2.xlsx')  # Ground-truth dataset
+    df_arta = pd.read_excel(
+        r'data/DataLast/dataset1kv1_ARTA_result_smell_frequency_with_testability_S2.xlsx')  # ARTA results
 
-    y_true = y_true[961:985]
-    y_pred = y_pred[961:985]
+    projects = ['EIRENE', 'ERTMS/ETCS', 'CCTNS', 'Gamma-J', 'KeePass', 'Peering', 'All']
+    project_name = projects[6]
+
+    if project_name != 'All':
+        df_gt = df_gt.loc[df_gt['Project'] == project_name]
+        df_arta = df_arta.loc[df_arta['Project'] == project_name]
+
+    y_true, y_pred = list(df_gt[f'Testability_with_alpha_{mode}'].values), list(
+        df_arta[f'Testability_with_alpha_{mode}'].values)
+
+    # y_true = y_true[961:985]
+    # y_pred = y_pred[961:985]
 
     # Print all classifier model metrics
-    print('Evaluating requirement testability ...')
-    print('Regressor minimum prediction', min(y_pred), 'Regressor maximum prediction', max(y_pred))
+    print(f'Evaluating requirement testability for project {project_name} in mode {mode}:')
+    # print('Regressor minimum prediction', min(y_pred), 'Regressor maximum prediction', max(y_pred))
     df = pd.DataFrame()
-    df['r2_score_uniform_average'] = [r2_score(y_true, y_pred, multioutput='uniform_average')]
-    df['r2_score_variance_weighted'] = [r2_score(y_true, y_pred, multioutput='variance_weighted')]
+    # df['r2_score_uniform_average'] = [r2_score(y_true, y_pred, multioutput='uniform_average')]
+    # df['r2_score_variance_weighted'] = [r2_score(y_true, y_pred, multioutput='variance_weighted')]
 
-    df['explained_variance_score_uniform_average'] = [
-        explained_variance_score(y_true, y_pred, multioutput='uniform_average')]
-    df['explained_variance_score_variance_weighted'] = [
-        explained_variance_score(y_true, y_pred, multioutput='variance_weighted')]
+    # df['explained_variance_score_uniform_average'] = [explained_variance_score(y_true, y_pred, multioutput='uniform_average')]
+    # df['explained_variance_score_variance_weighted'] = [explained_variance_score(y_true, y_pred, multioutput='variance_weighted')]
 
     df['mean_absolute_error'] = [mean_absolute_error(y_true, y_pred)]
     df['mean_squared_error_MSE'] = [mean_squared_error(y_true, y_pred)]
     df['mean_squared_error_RMSE'] = [mean_squared_error(y_true, y_pred, squared=False)]
-    df['median_absolute_error'] = [median_absolute_error(y_true, y_pred)]
 
     if min(y_pred) >= 0:
         df['mean_squared_log_error'] = [mean_squared_log_error(y_true, y_pred)]
         # ValueError: Mean Tweedie deviance error with power=2 can only be used on strictly positive y and y_pred.
-        df['mean_poisson_deviance'] = [mean_poisson_deviance(y_true, y_pred, )]
-        df['mean_gamma_deviance'] = [mean_gamma_deviance(y_true, y_pred, )]
-    df['max_error'] = [max_error(y_true, y_pred)]
+        # df['mean_poisson_deviance'] = [mean_poisson_deviance(y_true, y_pred, )]
+        # df['mean_gamma_deviance'] = [mean_gamma_deviance(y_true, y_pred, )]
 
-    df.to_excel(r'data/DataLast/dataset1kv1_ARTA_evaluation_metrics_6_Peering.xlsx', index=True, index_label='Row')
+    # df['max_error'] = [max_error(y_true, y_pred)]
+    df['median_absolute_error'] = [median_absolute_error(y_true, y_pred)]
+
+    # df.to_excel(r'data/DataLast/dataset1kv1_ARTA_evaluation_metrics_6_Peering.xlsx', index=True, index_label='Row')
+
+    # Revision 2
+    # All projects
+    # df.to_excel(f'data/DataLast/error_metrics_S2/dataset1kv1_ARTA_evaluation_metrics_S2_{mode}.xlsx', index=True, index_label='Row')
+
+    # Individual project
+    # df.to_excel(r'data/DataLast/dataset1kv1_ARTA_evaluation_metrics_{0}_{1}_S2.xlsx'.format(project_name, mode),
+    #             index=True, index_label='Row')
+
+    for col_ in df.columns:
+        print(f'{str(col_)} \t\t {round(df[col_][0], 4)}')
 
 
-def draw_cleanness_and_testability():
-    df_gt = pd.read_excel(r'data/DataLast/dataset1kv1_smell_frequency_with_testability.xlsx')  # Ground-truth dataset
-    df_arta = pd.read_excel(r'data/DataLast/dataset1kv1_ARTA_result_smell_frequency_with_testability.xlsx')
-    df_smella = pd.read_excel(r'data/DataLast/dataset1kv1_Smella_result_smell_frequency_with_testability.xlsx')
+def draw_cleanness_and_testability(
+        # mode='softened',
+        mode='hardened'
+        ):
+
+    df_gt = pd.read_excel(
+        r'data/DataLast/dataset1kv1_smell_frequency_with_testability_with_alphas_S3.xlsx', sheet_name='Sheet1')  # Ground-truth dataset
+    df_arta = pd.read_excel(r'data/DataLast/dataset1kv1_ARTA_result_smell_frequency_with_testability_S3.xlsx', sheet_name='Sheet1')  # ARTA
+    df_smella = pd.read_excel(
+        r'data/DataLast/dataset1kv1_Smella_result_smell_frequency_with_testability_S3.xlsx', sheet_name='Sheet1')  # Smella
 
     df = pd.DataFrame()
     df['ReqTxt'] = df_gt['ReqTxt']
     df['Project'] = df_gt['Project']
 
-    df['Clarity'] = df_gt['Clarity']
-    df['Ground-truth (Manual)'] = df_gt['Testability']
+    df['Clarity'] = df_gt['Cleanness']
+    df['Ground-truth (Manual)'] = df_gt[f'Testability_with_alpha_{mode}']
 
-    df['Clarity (ARTA)'] = df_arta['Clarity']
-    df['ARTA'] = df_arta['Testability']
+    df['Clarity (ARTA)'] = df_arta['Cleanness']
+    df['ARTA'] = df_arta[f'Testability_with_alpha_{mode}']
 
-    df['Clarity (Smella)'] = df_smella['Clarity']
-    df['Smella'] = df_smella['Testability']
+    df['Clarity (Smella)'] = df_smella['Cleanness']
+    df['Smella'] = df_smella[f'Testability_with_alpha_{mode}']
 
     # print(df)
 
     df.drop(columns=['Clarity', 'Clarity (ARTA)', 'Clarity (Smella)'], inplace=True)
-    df2 = pd.melt(df, id_vars=['ReqTxt', 'Project'], value_name='Testability (α = 0.01)', var_name='Method/Tool')
+    df2 = pd.melt(df, id_vars=['ReqTxt', 'Project'], value_name=f'Testability ({mode} alpha)', var_name='Method/Tool')
     print(df2)
     # df2.to_excel('Temp.xlsx')
     # return
@@ -624,14 +729,14 @@ def draw_cleanness_and_testability():
     kind = ['strip', 'swarm', 'box', 'violin', 'boxen', 'point', 'bar', 'count']
     g = sns.catplot(
         x='Project',
-        y='Testability (α = 0.01)',
+        y=f'Testability ({mode} alpha)',
         hue='Method/Tool',
         # dodge=True,
         # col='Project',
         # col_wrap=3,
         order=['EIRENE', 'ERTMS/ETCS', 'CCTNS', 'Gamma-J', 'KeePass', 'Peering'],
         # col_order=['EIRENE', 'ERTMS/ETCS', 'CCTNS', 'Gamma-J', 'KeePass', 'Peering'],
-        height=5,
+        height=4.5,
         aspect=2,
         data=df2,
         kind=kind[5],
@@ -641,7 +746,7 @@ def draw_cleanness_and_testability():
         palette=sns.color_palette(palette='tab10', n_colors=6),
         # capsize=0.20,
         # ci=None,
-        n_boot=100000,
+        n_boot=1000,
         # legend='',
         # ax=ax,
         # cut=0,
@@ -653,17 +758,17 @@ def draw_cleanness_and_testability():
 
     g = sns.stripplot(
         x='Project',
-        y='Testability (α = 0.01)',
+        y=f'Testability ({mode} alpha)',
         hue='Method/Tool',
         order=['EIRENE', 'ERTMS/ETCS', 'CCTNS', 'Gamma-J', 'KeePass', 'Peering'],
         # hue_order=['Original', 'Refactored', ],
         dodge=True,
         data=df2,
-        s=2.25,
+        s=3.5,
         # color='0.1',
         # marker='*',
         palette=sns.color_palette('tab10'),
-        linewidth=0.15,
+        linewidth=0.25,
         edgecolor='gray',
         ax=g.ax,
 
@@ -683,34 +788,39 @@ def draw_cleanness_and_testability():
     sns.despine(top=True, right=True, left=False, bottom=False, offset=None, trim=False)
 
     plt.tight_layout()
-    plt.savefig('charts/requirement_testability_v3.png')
-
+    # plt.savefig('charts/requirement_testability_v3.png')  # v3 for Revision 1
+    # plt.savefig('charts/requirement_testability_v4_softened.png')  # v4 for Revision 2
+    # plt.savefig('charts/requirement_testability_v4_hardened.png')  # v4 for Revision 2
     plt.show()
 
 
 def regress_with_decision_tree(model_path):
-    df_gt = pd.read_excel(r'data/DataLast/dataset1kv1_smell_frequency_with_testability.xlsx')  # Ground-truth dataset
-    X = df_gt.iloc[:, 8:-2]
+    df_gt = pd.read_excel(
+        r'data/DataLast/dataset1kv1_smell_frequency_with_testability_with_alphas_S3.xlsx', sheet_name='Sheet1')  # Ground-truth dataset
+
+    X = df_gt.iloc[:, 8:-3]
     # print(X)
     # return
-    y = df_gt.iloc[:, -2]
+    y = df_gt.iloc[:, -1]
+    # print(y)
+    # return
     # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.0, random_state=42)
     X_train, y_train = X, y
 
     clf = tree.DecisionTreeRegressor()
 
     # CrossValidation iterator object:
-    cv = ShuffleSplit(n_splits=10, test_size=0.20, random_state=42)
+    cv = ShuffleSplit(n_splits=5, test_size=0.20, random_state=13)
 
     # Set the parameters to be used for tuning by cross-validation
-    parameters = {'max_depth': range(1, 100, 1),
+    parameters = {'max_depth': range(2, 50, 1),
                   'criterion': ['mse', 'friedman_mse', 'mae'],
                   # 'criterion': ['mse'],
-                  'min_samples_split': range(2, 100, 1)
+                  'min_samples_split': range(2, 50, 1)
                   }
     # Set the objectives which must be optimized during parameter tuning
     # scoring = ['r2', 'neg_mean_squared_error', 'neg_root_mean_squared_error', 'neg_mean_absolute_error',]
-    scoring = ['neg_root_mean_squared_error', ]
+    scoring = ['neg_root_mean_squared_error']
 
     # Find the best model using gird-search with cross-validation
     clf = GridSearchCV(clf, param_grid=parameters, scoring=scoring, cv=cv, n_jobs=4,
@@ -732,9 +842,15 @@ def regress_with_decision_tree(model_path):
     dump(clf, model_path)
 
     fig = plt.figure(figsize=(12, 8))
-    plot_tree(clf, filled=True, max_depth=2, feature_names=df_gt.columns[8:-2])
+    plot_tree(clf, filled=True,
+              max_depth=2,
+              feature_names=df_gt.columns[8:-3],
+              precision=5,
+              rounded=True,
+              proportion=True,
+              impurity=True)
     plt.tight_layout()
-    plt.savefig(model_path[:-7] + 'tree_plot.png')
+    # plt.savefig(model_path[:-7] + 'tree_plot.png')
     plt.show()
 
 
@@ -744,20 +860,34 @@ def compute_requirement_length():
     print('# words', len(blob.words))
     print('# sentence', len(blob.sentences))
 
-def testability_histogram():
-    df_gt = pd.read_excel(r'data/DataLast/dataset1kv1_smell_frequency_with_testability.xlsx')
-    df_arta = pd.read_excel(r'data/DataLast/dataset1kv1_ARTA_result_smell_frequency_with_testability.xlsx')
+
+def testability_histogram(
+        mode='softened',
+        # mode='hardened'
+):
+    # df_gt = pd.read_excel(r'data/DataLast/dataset1kv1_smell_frequency_with_testability.xlsx')
+    # df_arta = pd.read_excel(r'data/DataLast/dataset1kv1_ARTA_result_smell_frequency_with_testability.xlsx')
+
+    # Revision 3 # R1 for Neural computing and applications
+    df_gt = pd.read_excel(r'data/DataLast/dataset1kv1_smell_frequency_with_testability_with_alphas_S3.xlsx',
+                          sheet_name='Sheet1')
+    # df_arta = pd.read_excel(r'data/DataLast/dataset1kv1_ARTA_result_smell_frequency_with_testability_S3.xlsx',
+    #                         sheet_name='Sheet1')
+
+    df = df_gt
+    # df = df_arta
 
     sentences_list = []
-    for index, row in df_gt.iterrows():
+    for index, row in df.iterrows():
         blob = tb.TextBlob(row['ReqTxt'])
         sentences_list.append(len(blob.sentences))
-    df_gt['Sentences'] = sentences_list
+    df['Sentences'] = sentences_list
     print(Counter(sentences_list))
 
-    df_gt['Testability_ARTA']= df_arta['Testability']
+    df['Testability'] = df[f'Testability_with_alpha_{mode}']
     # fig, ax = plt.subplots()
-    g = sns.displot(df_gt, x='Testability_ARTA', hue='Project',
+
+    g = sns.displot(df, x='Testability', hue='Project',
                     hue_order=['EIRENE', 'ERTMS/ETCS', 'CCTNS', 'Gamma-J', 'KeePass', 'Peering'],
                     bins=10,
                     kind='hist',
@@ -767,7 +897,6 @@ def testability_histogram():
                     # ax=ax
                     # legend=True,
                     # rug=True,
-
                     )
     """
     sns.displot(df_gt, x='Testability_ARTA', hue='Project',
@@ -792,25 +921,31 @@ def testability_histogram():
     # plt.legend(loc='upper left', bbox_to_anchor=(1,1))
     # g.fig.get_axes()[0].legend(loc='lower left')
     # g.despine(left=True)
-    g.ax.set(xlabel='Testability')
+    g.ax.set(xlabel=f'Testability bins')
     # plt.tight_layout()
-    plt.savefig('charts/testability_arta_with_projects_histogram_v1.png')
+    # plt.savefig('charts/testability_ARTA_with_projects_histogram_v2_hardened.png')
     plt.show()
 
 
-def comparing_alphas(csv_path=r'data/DataLast/dataset1kv1_smell_frequency_with_testability_with_alphas.xlsx'):
-    df_gt = pd.read_excel(csv_path)  # Ground-truth dataset
+def comparing_alphas(csv_path=r'data/DataLast/dataset1kv1_smell_frequency_with_testability_with_alphas_S3.xlsx'):
+    df_gt = pd.read_excel(csv_path, sheet_name='Sheet1')  # Ground-truth dataset
 
     df = pd.DataFrame()
     df['ReqTxt'] = df_gt['ReqTxt']
     df['Project'] = df_gt['Project']
 
+    # Revision 1
     # Variables
     # df['Cleanness'] = df_gt['Cleanness']
-    df['α = 0'] = df_gt['Testability_with_alpha_0.00']
-    df['α = 0.01'] = df_gt['Testability_with_alpha_0.01']
-    df['α = 0.50'] = df_gt['Testability_with_alpha_0.05']
-    df['α = 0.99'] = df_gt['Testability_with_alpha_0.99']
+    # df['α = 0'] = df_gt['Testability_with_alpha_0.00']
+    # df['α = 0.01'] = df_gt['Testability_with_alpha_0.01']
+    # df['α = 0.50'] = df_gt['Testability_with_alpha_0.05']
+    # df['α = 0.99'] = df_gt['Testability_with_alpha_0.99']
+
+    # Revision 2
+    df['Clarity (α = 0)'] = df_gt['Cleanness']
+    df['Testability (Softened α)'] = df_gt['Testability_with_alpha_softened']
+    df['Testability (Hardened α)'] = df_gt['Testability_with_alpha_hardened']
 
     # print(df)
 
@@ -848,8 +983,8 @@ def comparing_alphas(csv_path=r'data/DataLast/dataset1kv1_smell_frequency_with_t
         # bw=.2
         # markers=['o', 'x', '+', '*', 's'],
         # linestyles=['solid', '-', '--', '-.', ':'],
-        markers=['o', 'x', '+', '*',],
-        linestyles=['solid', '-', '--', ':'],
+        markers=['o', 'x', '+'],
+        linestyles=['solid', '--', '-.'],
         join=True,
     )
 
@@ -861,15 +996,15 @@ def comparing_alphas(csv_path=r'data/DataLast/dataset1kv1_smell_frequency_with_t
         # hue_order=['Original', 'Refactored', ],
         dodge=True,
         data=df2,
-        s=2.25,
+        s=3,
         # color='0.1',
         # marker='*',
         palette=sns.color_palette('tab10'),
-        linewidth=0.15,
+        linewidth=0.25,
         edgecolor='gray',
         ax=g.ax,
-
     )
+
     # plt.legend(loc='upper left')
     handles, labels = g.get_legend_handles_labels()
     print(handles, labels)
@@ -885,24 +1020,132 @@ def comparing_alphas(csv_path=r'data/DataLast/dataset1kv1_smell_frequency_with_t
     sns.despine(top=True, right=True, left=False, bottom=False, offset=None, trim=False)
 
     plt.tight_layout()
-    plt.savefig('charts/requirement_testability_comparing_alphas_v3.png')
+
+    # Revision 1
+    # plt.savefig('charts/requirement_testability_comparing_alphas_v3.png')
+
+    # Revision 2
+    # plt.savefig('charts/requirement_testability_comparing_alphas_v4.png')
 
     plt.show()
 
 
+# Submission 2
+def compute_cumulative_values(df2):
+    df = pd.read_excel('data/S2/AutoDic_S2.xlsx', sheet_name='Sheet1')
+    similarity = [i * 0.005 for i in range(0, 200, 1)]
+    cumulative_count = dict()
+    if 'Similarity' in df2.columns:
+        df['Similarity'] = df2['Similarity']
+    for sim_ in similarity:
+        df1 = df.loc[df['Similarity'] <= sim_]
+        count = 0
+        for index, row in df1.iterrows():
+            if 'T' in row.tolist():
+                count += 1
+        if len(df1.index) > 0:
+            # cumulative_count[sim_] = count/len(df1.index)
+            cumulative_count[sim_] = count
+    # df_new = pandas.DataFrame(cumulative_count.items(), columns=['Similarity', 'Percentage of smelly words'])
+    df_new = pandas.DataFrame(cumulative_count.items(), columns=['Similarity', 'Smelly words'])
+    return df_new
+
+
+def rq2_sensitivity_analysis():
+    #
+    df = pd.read_csv('sensitivity_word2vec_matrix.csv')
+    df1 = pandas.DataFrame()
+    # df1['Word'] = df['Word']
+    df2 = pd.DataFrame()
+    df2['Word'] = df['Word']
+
+    for col_ in df.columns[2:]:
+        df2['Word'] = df['Word']
+        df2['Similarity'] = df[col_]
+        df3 = compute_cumulative_values(df2)
+        parts = col_.split()
+        df1['Smelly words in absence of ' + parts[-1]] = df3['Smelly words']
+
+    df2 = pd.DataFrame()
+    df3 = compute_cumulative_values(df2)
+    df1['Smelly words all domains'] = df3['Smelly words']
+    df1['Similarity'] = df3['Similarity']
+
+    df_melt = df1.melt(id_vars=['Similarity'], var_name='Domain', value_name='Smelly words')
+    print(df_melt)
+    # quit()
+    ax = sns.scatterplot(data=df_melt,
+                         x=df_melt['Similarity'],
+                         # y=df_new['Percentage of smelly words']
+                         y=df_melt['Smelly words'],
+                         hue=df_melt['Domain'], style=df_melt['Domain'],
+                         s=8)
+    ax.set(xticks=np.arange(0, 1.05, 0.05))
+
+    last_smelly_word_similarity_factor = 0.577578277
+    last_smelly_word_similarity_association = 0.594287619
+
+    plt.axvline(last_smelly_word_similarity_association, 0, 250, linestyle='--', color='orange')
+    plt.text(0.6, -0.5, '0.5943', color='red', )
+    plt.tight_layout()
+    plt.show()
+
+
+def ranked_correlation_analysis():
+    """
+    The statistical test reports a strong positive correlation with a value of 0.9.
+    The p-value is close to zero, which means that the likelihood of observing the data given that the samples
+    are uncorrelated is very unlikely (e.g. 95% confidence) and that we can reject the null hypothesis that
+    the samples are uncorrelated.
+
+    :return:
+    """
+    pass
+
+
+def compare_smella_and_arta_accuracy():
+    data_file = r'data/DataLast/dataset1kv1_evaluationT_long_form.xlsx'
+    df = pd.read_excel(data_file, sheet_name='evaluation_pandas')
+    print(df.columns)
+    df2 = df.melt(id_vars=['Smell', 'Method'], var_name='Metric', value_name='Value')
+    g = sns.catplot(data=df2, x='Smell', y='Value', hue='Method', col='Metric', kind='bar', legend=False)
+
+    def decorate_chart(g, new_value):
+        hatches = itertools.cycle(['//', '\\\\', '//', '\\\\', '//', '\\\\', '*', 'o', 'O', '.'])
+        for i in range(0, 3):
+            for j, patch in enumerate(g.axes[0][i].patches):
+                current_width = patch.get_width()
+                diff = current_width - new_value
+                # we change the bar width
+                patch.set_width(new_value)
+                # we recenter the bar
+                patch.set_x(patch.get_x() + diff * .5)
+                if j % 3 == 0:
+                    hatch = next(hatches)
+                patch.set_hatch(hatch)
+
+    decorate_chart(g, new_value=0.30)
+    g.axes[0][1].legend(loc='center', bbox_to_anchor=(0.5, 1.1), ncol=2, fancybox=True, shadow=False)
+    plt.tight_layout()
+    plt.show()
+
+
 # ------------------------------------------
-# compute_requirements_stats()
-# compute_smell_prevalence()
-# compute_smell_frequency_percentage()
-# draw_barplot_of_mean_and_sd_of_smell_frequency()
-# draw_smells_against_size()
-# draw_project_smell_frequency()
-# draw_total_smell_frequency()
-# draw_total_smell_frequency2()
-# compute_requirement_testability()
-# evaluate_testability_measurement_method()
-# draw_cleanness_and_testability()
-# regress_with_decision_tree(model_path=r'sklearn_models/DT_GT_v2.joblib')
-# compute_requirement_length()
-#testability_histogram()
-comparing_alphas()
+if __name__ == '__main__':
+    # compute_requirements_stats()
+    # compute_smell_prevalence()
+    # compute_smell_frequency_percentage()
+    # draw_barplot_of_mean_and_sd_of_smell_frequency()
+    # draw_smells_against_size()
+    # draw_project_smell_frequency()
+    # draw_total_smell_frequency()
+    # draw_total_smell_frequency2()
+    # compute_requirement_testability()
+    # evaluate_testability_measurement_method()
+    # draw_cleanness_and_testability()
+    regress_with_decision_tree(model_path=r'sklearn_models/DT_GT_v1_S2.joblib')
+    # compute_requirement_length()
+    # testability_histogram()
+    # comparing_alphas()
+    # rq2_sensitivity_analysis()
+    # compare_smella_and_arta_accuracy()
