@@ -62,10 +62,14 @@ python3 -m pip install virtualenv
 cd project_directory
 virtualenv env 
 ```
+
 Activate virtual environment using:
+
 ```bash
 source env/bin/activate
 ```
+
+
 #### Install project's requirements
 Run
 ```bash
@@ -75,8 +79,11 @@ then install necessary packages for textBlob
 ```bash
 python -m textblob.download_corpora
 ```
+
 #### Necessary packages on ubuntu
+
 Install necessary packages for mysqlclient on ubuntu using
+
 ```bash
 sudo apt install python3-dev default-libmysqlclient-dev poppler-utils
 ```
@@ -85,6 +92,7 @@ sudo apt install python3-dev default-libmysqlclient-dev poppler-utils
 First, create a mysql database for the project
 
 then create file called local_settings.py in Smella folder
+
 ```bash
 vim Smella/local_settings.py
 ```
@@ -100,25 +108,34 @@ DB_NAME = 'database name'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+
 ```
 then apply migration using
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
-then create a super user for admin page
+
+then create a super-user for admin page
+
 ```bash
 python manage.py createsuperuser
 ```
 
 until the ui fully written, create requirements and projects using admin page "/admin/"
 
+
 #### Running Project
+
 run project using
+
 ```bash
 python manage.py runserver
 ```
+
+
 #### Insert Dataset
+
 insert dataset the using.
 ```bash
 python manage.py insert_date <location of json file> <a project name for this dataset>
@@ -133,6 +150,9 @@ python manage.py insert_date <location of json file> <a project name for this da
 ## Release date
 
 The **full version of source code** will be available as soon as the *relevant paper(s) are published*.
+
+**Update:** The manuscript is under review in Neural Computing and Applications
+
 
 ## Read more
 
