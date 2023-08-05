@@ -1,15 +1,25 @@
-site_name: ARTA Docs (v0.1.2)
+site_name: ARTA Docs (v0.1.3)
 site_url: https://m-zakeri.github.io
 repo_url: https://github.com/m-zakeri/ARTA
-site_description: Automatic Requirement Testability Analyzer
+site_description: ARTA - Automatic Requirement Testability Analyzer
 site_author: Morteza Zakeri
-copyright: © 2020-2021 ADAFEST project - Reverse engineering laboratory
+copyright: © 2020-2023 ARTA project - Morteza Zakeri Ph.D. thesis
 
 theme:
   name: material
   palette:
-    scheme: preference
-    primary: green
+    - scheme: default
+      primary: green
+      accent: green
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: green
+      accent: green
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
   icon:
     logo: material/library
   features:
@@ -19,12 +29,13 @@ theme:
       - icon: fontawesome/brands/linkedin
         link: https://www.linkedin.com/in/mortazazakeri/
 
-
 plugins:
   - search
   - mkdocstrings:
       handlers:
         python:
+          rendering:
+            show_source: true
           setup_commands:
             - import sys
             - import os
