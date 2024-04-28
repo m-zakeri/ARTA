@@ -1,0 +1,359 @@
+[
+  {
+    "title": "requirment1",
+    "requirement id": 1,
+    "description": "Web Store shall operate with the following internet browsers: Microsoft Internet Explorer version 6 and 7, Netscape Communicator Version 4 and 5.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment2",
+    "requirement id": 2,
+    "description": "Web Store shall operate on an Intel based system with Slackware Linux 2.6 and Apache Web Server. The operating system is designed by the Yoggie Corporation. Although maintenance documentation will be supplied and the operating system will be tested, the developers of this Web Store are not responsible for the functionality of the operating system.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment3",
+    "requirement id": 3,
+    "description": "The system shall use SQL based database to store inventory information.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment4",
+    "requirement id": 4,
+    "description": "USB interface and divers are provided by Yoggie Corporation.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment5",
+    "requirement id": 5,
+    "description": "Must use a SQL based database. SQL standard is the most widely used database format. Restricting to SQL allows easy of use and compatibility for Web Store.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment6",
+    "requirement id": 6,
+    "description": "Compatibility is only tested and verified for Microsoft Internet Explorer version 6 and 7, Netscape Communicator Version 4 and 5. Other versions may not be 100% compatible. Also other browsers such as Mozilla or Firefox may not be 100% compatible.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment7",
+    "requirement id": 7,
+    "description": "Shall install online help for users via the web interface",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment8",
+    "requirement id": 8,
+    "description": "Shall deliver Operations and Maintenance manual, Users Guide book, and Installation Instructions for the Administrator.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment9",
+    "requirement id": 9,
+    "description": "Assume the delivery of development, test and evaluate samples of the USB system from Yoggie.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment10",
+    "requirement id": 10,
+    "description": "Assume Yoggie will freeze the baseline of the USB system after delivery.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment11",
+    "requirement id": 11,
+    "description": "Upon the USB being plugged in the system shall be able to be deployed and operational in less than 1 minute.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment12",
+    "requirement id": 12,
+    "description": "The system shall be able to handle 1000 customers logged in concurrently at the same time.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment13",
+    "requirement id": 13,
+    "description": "The system shall be able to retrieve 200 products per second.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment14",
+    "requirement id": 14,
+    "description": "The system shall be able to add product to shopping cart in less than 2ms.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment15",
+    "requirement id": 15,
+    "description": "The system shall be able to search for a specified product in less than 1 second.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment16",
+    "requirement id": 16,
+    "description": "The system shall be able to email customer and vendor in less than 1 second.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment17",
+    "requirement id": 17,
+    "description": "The system shall be able to validate credit card in less than 2 seconds.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment18",
+    "requirement id": 18,
+    "description": "The system shall be able to acquire shipping charges in less than 2 seconds.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment19",
+    "requirement id": 19,
+    "description": "The system shall be able to restore 1000 records per second.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment20",
+    "requirement id": 20,
+    "description": "The system will do periodic backups through a live internet connection.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment21",
+    "requirement id": 21,
+    "description": "The system shall validate credit cards against fraud.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment22",
+    "requirement id": 22,
+    "description": "The system shall encrypt all sensitive information via https.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment23",
+    "requirement id": 23,
+    "description": "The system shall encrypt all customer data in database.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment24",
+    "requirement id": 24,
+    "description": "The system shall auto detect IP DOS attacks and block IP automatically.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment25",
+    "requirement id": 25,
+    "description": "The system shall detect consecutive failed login attempts.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment26",
+    "requirement id": 26,
+    "description": "The system shall be protected by open source firewall called Firestarter. http://www.fs-security.com/",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment27",
+    "requirement id": 27,
+    "description": "The system shall have an availability of 99.99%.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment28",
+    "requirement id": 28,
+    "description": "The system shall perform searches via Dijkstra's shortest path algorithm.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment29",
+    "requirement id": 29,
+    "description": "For returning customers, the system shall validate 'existing' credit card in system\n                                after each log in.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment30",
+    "requirement id": 30,
+    "description": "The system shall automatically compress image files that are too large in size.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment31",
+    "requirement id": 31,
+    "description": "The system will employ on demand asynchronous loading for faster execution of pages.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment32",
+    "requirement id": 32,
+    "description": "The system shall validate email address existence.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment33",
+    "requirement id": 33,
+    "description": "The system shall be easy to use",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment34",
+    "requirement id": 34,
+    "description": "The system shall be easy to learn",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment35",
+    "requirement id": 35,
+    "description": "The system shall utilize help bubbles to assist managers, customers, and administrators",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment36",
+    "requirement id": 36,
+    "description": "The system shall employ easy to locate buttons",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment37",
+    "requirement id": 37,
+    "description": "The system shall prompt customer with friend easy to read error messages.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment38",
+    "requirement id": 38,
+    "description": "The system shall utilize consistent symbols and colors for clear notifications.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment39",
+    "requirement id": 39,
+    "description": "The system shall utilize interchangeable plugins.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment40",
+    "requirement id": 40,
+    "description": "The system shall be easily updatable for fixes and patches.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment41",
+    "requirement id": 41,
+    "description": "The system shall create logs of all changes, updates, or fixes that are done to the site.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment42",
+    "requirement id": 42,
+    "description": "The system shall be easy to upgrade.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment43",
+    "requirement id": 43,
+    "description": "The system shall be extremely portable via the usb drive.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment44",
+    "requirement id": 44,
+    "description": "The system shall be easy to migrate or backed up via another usb drive.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment45",
+    "requirement id": 45,
+    "description": "The system should be able to run under debug mode.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment46",
+    "requirement id": 46,
+    "description": "The system should be able to run test credit card transactions.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment47",
+    "requirement id": 47,
+    "description": "The system should be able to run test shipping orders.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment48",
+    "requirement id": 48,
+    "description": "The system should be able to create test environment of weborder system.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment49",
+    "requirement id": 49,
+    "description": "The system hardware shall be fixed and patched via an internet connection.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment50",
+    "requirement id": 50,
+    "description": "Yoggie shall coordinate on future enhancement and features with our\n            organization.",
+    "type": "functional",
+    "project": "gamma"
+  },
+  {
+    "title": "requirment51",
+    "requirement id": 51,
+    "description": "The system shall adhere to the following hardware requirements:\n        \n4GB Flash ram chip\n128MB SDRAM\nIntel XScale PXA270 520-MHz chipset\nOS: Apache web server\nDatabase: MySQL",
+    "type": "functional",
+    "project": "gamma"
+  }
+]

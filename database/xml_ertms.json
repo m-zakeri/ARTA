@@ -1,0 +1,1395 @@
+[
+  {
+    "title": "requirment1",
+    "requirement id": 1,
+    "description": "ETCS shall provide the driver with information to allow him to drive the train safely.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment2",
+    "requirement id": 2,
+    "description": "ETCS shall be able to supervise train and shunting movements.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment3",
+    "requirement id": 3,
+    "description": "If the supervision is performed by a RBC it shall be possible to prevent movements of a traction unit in its area if not authorised by the RBC.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment4",
+    "requirement id": 4,
+    "description": "ETCS is required to be functional to a maximum train speed of 500 km/h.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment5",
+    "requirement id": 5,
+    "description": "The following definitions shall apply for the ETCS application levels:\n\t\nLevel 0: ETCS active for limited train control function; trackside not fitted with any train control system or fitted with a train control system for which no STM is available onboard.\n\t\nLevel 1: Basic track to train information via intermittent transmission media, e.g. balises. This information can be supported by infill, transmitted via balise, loop or radio.\n\t\nLevel 2: Basic track to train and train to track information via continuous transmission media, i.e. radio. The train detection is provided by trackside.\n\t\nLevel 3: Same as level 2 except that train integrity is provided by onboard and therefore trackside. train detection is optional.\n\t\nLevel STM (Specific Transmission Module): Track to train information provided by national system. Onboard functions provided by national system (STM) in co-operation with onboard ETCS.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment6",
+    "requirement id": 6,
+    "description": "It shall be possible to implement one or more of the ETCS application levels on a line.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment7",
+    "requirement id": 7,
+    "description": "Trains equipped for ERTMS/ETCS application level 3 shall be able to run on lines equipped with ERTMS/ETCS application level 3, 2, 1 and 0, trains equipped for ERTMS/ETCS application level 2 shall be able to run on lines equipped with ERTMS/ETCS application level 2, 1 and 0 and trains equipped for ERTMS/ETCS application level 1 shall be able to run on lines equipped with ERTMS/ETCS application level 1 and 0.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment8",
+    "requirement id": 8,
+    "description": "The current application level shall be indicated on the DMI.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment9",
+    "requirement id": 9,
+    "description": "The driver shall acknowledge the level transitions, if requested from trackside. If the driver does not acknowledge after the transition the brake shall be applied. If the driver acknowledges afterwards, the brake can be released",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment10",
+    "requirement id": 10,
+    "description": "ETCS shall be compatible with existing national systems listed in the CCS TSI such that it does not interfere with the national systems and is not interfered with by the national systems.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment11",
+    "requirement id": 11,
+    "description": "The ETCS trainborne equipment shall be capable of supervising the following operational states:\n\t\nFull Supervision operation\nPartial Supervision operation\n\t\t\t\nStaff Responsible operation\nOn Sight operation\nUnfitted Line operation\nTrain Trip operation\nPost Trip operation\n\n\nNational operation (STM)\nTandem operation\nMultiple operation\nShunting operation\nStand By operation\nReversing operation",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment12",
+    "requirement id": 12,
+    "description": "Any transition which occurs while the train is moving shall in principle occur automatically.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment13",
+    "requirement id": 13,
+    "description": "Transitions which occur while the train is stationary, shall be initiated automatically or manually as appropriate.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment14",
+    "requirement id": 14,
+    "description": "If, as a result of an automatic transition, except for transitions to and from National Operation (STM), the responsibility for the driver increases, the ETCS shall seek an acknowledgement from the driver, whether the train is stationary or not.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment15",
+    "requirement id": 15,
+    "description": "For transitions to and from National Operation (STM) the ETCS shall request, an acknowledgement by the driver.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment16",
+    "requirement id": 16,
+    "description": "In case the transition has to be acknowledged and the driver fails to acknowledge as required, the ETCS shall initiate a brake application",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment17",
+    "requirement id": 17,
+    "description": "During the transition period between two operational states (including two different national operations) the supervision provided shall at least ensure the same protection provided by the least restrictive state.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment18",
+    "requirement id": 18,
+    "description": "If an ETCS equipped train passes a level transition to a line fitted with more than one level, the onboard shall switch to the highest level, according to the priority given by trackside, for which it is equipped.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment19",
+    "requirement id": 19,
+    "description": "If an ETCS equipped train passes a level transition to one or more levels for which it is not equipped, ETCS shall initiate a brake application.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment20",
+    "requirement id": 20,
+    "description": "The current operational status shall be indicated to the driver on the DMI",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment21",
+    "requirement id": 21,
+    "description": "The ETCS on-board shall be capable of receiving National values from the trackside to adapt to National requirements",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment22",
+    "requirement id": 22,
+    "description": "National values shall be applicable to a defined area",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment23",
+    "requirement id": 23,
+    "description": "Once received onboard the national values shall remain valid even if the onboard equipment is switched off",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment24",
+    "requirement id": 24,
+    "description": "If the on-board has no valid national values for the current location, default values shall be used by the onboard equipment.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment25",
+    "requirement id": 25,
+    "description": "Default values shall be harmonised values, permanently stored in all ERTMS/ETCS on board equipment",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment26",
+    "requirement id": 26,
+    "description": "At Start Up, the on board equipment shall perform an automatic self-test.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment27",
+    "requirement id": 27,
+    "description": "The test shall require no action on the part of the driver.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment28",
+    "requirement id": 28,
+    "description": "The DMI shall indicate the result of the self-test.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment29",
+    "requirement id": 29,
+    "description": "Train data shall be entered before the on-board ETCS equipment allows train movement.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment30",
+    "requirement id": 30,
+    "description": "The driver shall be able to select Train Data Entry on the DMI.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment31",
+    "requirement id": 31,
+    "description": "Entering or overwriting data manually by the driver shall be possible but only when stationary.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment32",
+    "requirement id": 32,
+    "description": "Train data may be entered automatically from a railway management system or from train memory.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment33",
+    "requirement id": 33,
+    "description": "The driver shall be able to consult train data when the train is stationary or moving.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment34",
+    "requirement id": 34,
+    "description": "Current train data shall be stored (except at transition to shunting) in the ETCS equipment until the traction unit is not operative.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment35",
+    "requirement id": 35,
+    "description": "Stored train data shall be offered to the driver to be confirmed when Data Entry starts.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment36",
+    "requirement id": 36,
+    "description": "The system for Train Data Entry shall provide for the input of other data required by STMs connected to ETCS. This may require additional items, not required for ETCS, to be entered.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment37",
+    "requirement id": 37,
+    "description": "The entry of driver identification and the selection of the language shall be possible.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment38",
+    "requirement id": 38,
+    "description": "The change of driver identification during a journey or a Train Running Number shall be possible",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment39",
+    "requirement id": 39,
+    "description": "Following successful completion of Train Data Entry, the driver shall be able to perform shunting movements or train movements.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment40",
+    "requirement id": 40,
+    "description": "The following data may be entered manually by the driver or from train memory:\n\nDriver identification\nTrain identification (train number) STM ready for use\nData required for brake calculation\nMaximum train speed\nTrain length\nStatus of air tight system\nType of electric power accepted\nData additional required for STM (if any)\nInternational train category\nTrain gauge\nMaximum axle load of the train with a resolution of 0,5 t",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment41",
+    "requirement id": 41,
+    "description": "The following data may be entered manually by the driver provided by external sources\n:\n\nDriver identification\nTrain identification (train number) STM ready for use\nData required for brake calculation\nMaximum train speed\nTrain length\nStatus of air tight system\nType of electric power accepted\nData additional required for STM (if any)\nInternational train category\nTrain gauge\nMaximum axle load of the train with a resolution of 0,5 t",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment42",
+    "requirement id": 42,
+    "description": "If the onboard fails to contact the RBC when awakening the driver shall be asked to enter the RBC contact details",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment43",
+    "requirement id": 43,
+    "description": "An ETCS equipped traction unit shall be capable of being moved in Shunting without train data, track data or movement authority.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment44",
+    "requirement id": 44,
+    "description": "Transfer to Shunting on driver's selection shall only be possible when stationary.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment45",
+    "requirement id": 45,
+    "description": "To prevent unauthorised use of the function permission shall be obtained from the RBC if the train is operating under the control of the RBC.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment46",
+    "requirement id": 46,
+    "description": "Permission received shall be indicated to the driver.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment47",
+    "requirement id": 47,
+    "description": "It shall be possible to manually select Shunting from Stand By operation, Full Supervision operation or Partial Supervision operation",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment48",
+    "requirement id": 48,
+    "description": "Automatic transfer to Shunting may be from Full Supervision operation and Partial Supervision operation status at any speed lower than or equal to the supervised shunting speed based on trackside information.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment49",
+    "requirement id": 49,
+    "description": "Before authomatic transition to Shunting, ETCS shall request confirmation from the driver.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment50",
+    "requirement id": 50,
+    "description": "ETCS shall supervise Shunting operation to a permitted national speed value.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment51",
+    "requirement id": 51,
+    "description": "The supervised Shunting speed shall be indicated to the driver on request.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment52",
+    "requirement id": 52,
+    "description": "It shall be possible to apply the train trip function, if the shunting movement passes a signal showing \"danger for shunting\".",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment53",
+    "requirement id": 53,
+    "description": "Exit from Shunting shall only be possible when the train is stationary.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment54",
+    "requirement id": 54,
+    "description": "Exit from Shunting shall take place when the driver selects exit from shunting.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment55",
+    "requirement id": 55,
+    "description": "Partial Supervision shall be selected either by the Driver, or by information received from track-to-train transmission.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment56",
+    "requirement id": 56,
+    "description": "If acknowledgement is specified the driver shall acknowledge transfer from Full Supervision to Partial Supervision within 5 seconds",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment57",
+    "requirement id": 57,
+    "description": "Partial Supervision shall be indicated on the DMI.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment58",
+    "requirement id": 58,
+    "description": "In Partial Supervision the train shall be supervised according to train speed and distance data available.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment59",
+    "requirement id": 59,
+    "description": "The train shall have the capability of being supervised to a ceiling speed.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment60",
+    "requirement id": 60,
+    "description": "This ceiling speed shall not be shown continually on the DMI but may be shown momentarily when selected by the driver.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment61",
+    "requirement id": 61,
+    "description": "The train shall leave Partial Supervision when the trainborne equipment is not operative any longer, when Shunting is selected or when Full Supervision is available.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment62",
+    "requirement id": 62,
+    "description": "It shall be possible to order a train trip when passing a stop signal",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment63",
+    "requirement id": 63,
+    "description": "Transferring to Full Supervision shall occur automatically when a movement authority and all other necessary information is received through track-to-train transmission.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment64",
+    "requirement id": 64,
+    "description": "It shall be possible for the trackside to ask a driver for confirmation about the occupancy of the track ahead before sending a Full Supervision movement authority.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment65",
+    "requirement id": 65,
+    "description": "Full Supervision shall provide supervision of speed and distance.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment66",
+    "requirement id": 66,
+    "description": "The trainborne equipment shall remain in Full Supervision until the trainborne equipment is not active any longer, when Shunting is selected or when Partial Supervision information is received.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment67",
+    "requirement id": 67,
+    "description": "The ETCS trainborne equipment shall be capable of being isolated.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment68",
+    "requirement id": 68,
+    "description": "When the ETCS trainborne equipment is isolated, the system shall not show any ETCS information other than the fact that the system is isolated.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment69",
+    "requirement id": 69,
+    "description": "Isolation of the ETCS trainborne equipment shall disconnect the ETCS trainborne equipment from the vehicle braking system.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment70",
+    "requirement id": 70,
+    "description": "The ETCS trainborne equipment shall be capable of receiving information from the national train control systems by means of the STM.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment71",
+    "requirement id": 71,
+    "description": "The DMI shall display or be compatible with information from national train control systems. This may mean displaying the information shown by the national system.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment72",
+    "requirement id": 72,
+    "description": "Unfitted operation shall be possible if ordered by trackside",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment73",
+    "requirement id": 73,
+    "description": "Unfitted operation shall be possible if selected by the driver at start up",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment74",
+    "requirement id": 74,
+    "description": "The on board shall supervise the train against a ceiling speed",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment75",
+    "requirement id": 75,
+    "description": "The ceiling speed value for the unfitted operation is determined by the lower value out of\n\nMaximum train speed\nNational value for unfitted operation",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment76",
+    "requirement id": 76,
+    "description": "The onboard shall be capable to switch to another ETCS status when transmitted from trackside",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment77",
+    "requirement id": 77,
+    "description": "The ETCS on-board shall be capable of receiving track description from the trackside.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment78",
+    "requirement id": 78,
+    "description": "It shall be possible to send information on adhesion conditions from trackside.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment79",
+    "requirement id": 79,
+    "description": "It shall also be possible, to allow the driver to change the adhesion conditions; in this case information from trackside has priority.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment80",
+    "requirement id": 80,
+    "description": "The trackside shall be able to send information for the calculation of speed profiles.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment81",
+    "requirement id": 81,
+    "description": "If track data at least to the location where the relevant movement authority ends are not available on-board, the movement authority shall be rejected.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment82",
+    "requirement id": 82,
+    "description": "Track to train transmission shall provide the capability to send different speed profiles for specific train categories.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment83",
+    "requirement id": 83,
+    "description": "The ETCS trainborne equipment shall supervise the end of movement authority, if this information is available on-board.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment84",
+    "requirement id": 84,
+    "description": "The target distance to be displayed on the DMI shall be based on the most restrictive braking curve.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment85",
+    "requirement id": 85,
+    "description": "Together with the movement authority, the on board shall be able to receive one or more time-out(s) for certain sections of the movement authority, and shorten the movement authority accordingly when a time out expires.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment86",
+    "requirement id": 86,
+    "description": "Using train data and infrastructure data, braking curves shall be calculated taking into account the target information but not the location of vehicles occupying the track.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment87",
+    "requirement id": 87,
+    "description": "The ceiling speed level for the movement authority shall be defined as data National Value.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment88",
+    "requirement id": 88,
+    "description": "Before entering an occupied track, a driver acknowledgement shall be requested.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment89",
+    "requirement id": 89,
+    "description": "The train shall be supervised according to train speed data available.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment90",
+    "requirement id": 90,
+    "description": "The train shall, as a minimum, be supervised to a ceiling speed; the supervised speed shall not be shown on the DMI unless selected by the driver.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment91",
+    "requirement id": 91,
+    "description": "The target distance shall not be shown on the DMI unless selected by the driver.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment92",
+    "requirement id": 92,
+    "description": "On request of the RBC, the driver shall have the possibility to confirm that the track ahead of him until the end of the on sight section is clear",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment93",
+    "requirement id": 93,
+    "description": "ETCS shall collect all relevant information concerning train and line speed.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment94",
+    "requirement id": 94,
+    "description": "ETCS shall calculate the permitted speed for the train for all locations of the authorised movement.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment95",
+    "requirement id": 95,
+    "description": "This static train speed profile shall also respect maximum line speed and track speed and special speed levels for special classes of trains.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment96",
+    "requirement id": 96,
+    "description": "The ETCS trainborne equipment calculates the static train speed profile on the basis of infrastructure data and train data.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment97",
+    "requirement id": 97,
+    "description": "Based on all relevant data, the ETCS shall calculate an emergency braking curve and a service braking curve",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment98",
+    "requirement id": 98,
+    "description": "Based on all relevant data, the ETCS shall calculate an emergency braking curve and a service braking curve",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment99",
+    "requirement id": 99,
+    "description": "When changing to a lower speed level, the front end of the train shall respect the dynamic train speed profile.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment100",
+    "requirement id": 100,
+    "description": "When changing to a higher speed level the rear end of the train shall respect the static train speed profile.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment101",
+    "requirement id": 101,
+    "description": "It shall be possible to define certain locations (e.g. tunnels) where speed increase is related to the front of the train.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment102",
+    "requirement id": 102,
+    "description": "The braking curves shall ensure that the train complies with its speed requirements.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment103",
+    "requirement id": 103,
+    "description": "Where failure to apply the full service brake is detected the emergency brake shall stop the train in rear of the danger point.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment104",
+    "requirement id": 104,
+    "description": "The release speed shall be calculated on board, based on either:\n\nsafety distance and overlap\naccuracy of odometry\ndeceleration performance of the train, etc\n\nor given from the trackside. The release speed given from the trackside shall take priority over the release speed calculated on board.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment105",
+    "requirement id": 105,
+    "description": "The release speed shall be indicated on the DMI.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment106",
+    "requirement id": 106,
+    "description": "If the release speed is calculated on board it shall ensure that the train will stop before reaching the danger point",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment107",
+    "requirement id": 107,
+    "description": "When the train is stationary or after a certain time (e.g. the time for \"route releasing\" of the overlap, the release speed calculation shall be based on the distance to the danger point (if calculated on-board). The condition for this change shall be defined for each target as infrastructure data.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment108",
+    "requirement id": 108,
+    "description": "Each railway shall have the possibility of allowing a different release speed for every signal.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment109",
+    "requirement id": 109,
+    "description": "The ETCS trainborne equipment shall be able to determine the location of the entire train.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment110",
+    "requirement id": 110,
+    "description": "On lines fitted with RBC, the ETCS trainborne equipment shall be able to transmit the location of the entire train to the RBC.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment111",
+    "requirement id": 111,
+    "description": "The train location calculation shall take into account error of odometry.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment112",
+    "requirement id": 112,
+    "description": "Actual speed shall be indicated on the DMI",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment113",
+    "requirement id": 113,
+    "description": "There shall be no discrepancy between the speed shown to the driver and the speed used for supervision of movement authorities and speed limits, function 4.3.7",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment114",
+    "requirement id": 114,
+    "description": "The indication provided shall enable the driver to drive at the permitted speed without receiving a warning and without intervention of ETCS.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment115",
+    "requirement id": 115,
+    "description": "The driver shall know the distance to the next point defining the indicated braking curve and the permitted speed allowed. This shall be shown to the driver in a way that is understandable and logical.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment116",
+    "requirement id": 116,
+    "description": "Visual and acoustic warnings to the driver about possible intervention from ETCS shall be given to enable the driver to react and avoid intervention.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment117",
+    "requirement id": 117,
+    "description": "The driver shall have the possibility to select the language, this does not concern non pre-defined texts sent from the trackside.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment118",
+    "requirement id": 118,
+    "description": "A train shall be supervised to its static and dynamic train speed profiles.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment119",
+    "requirement id": 119,
+    "description": "Within the braking curve area, a warning shall be given to the driver to enable him to react and avoid intervention from ETCS equipment at least 5 sec. before the intervention.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment120",
+    "requirement id": 120,
+    "description": "If the train or the shunting movement exceeds the permitted ceiling speed by a certain harmonised margin, the trainborne equipment shall execute a brake intervention until the actual speed does not exceed permitted speed; then the driver shall be able to release the brake",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment121",
+    "requirement id": 121,
+    "description": "The driver shall be able to release an ETCS emergency brake application when stationary.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment122",
+    "requirement id": 122,
+    "description": "If decided by a national value, the driver may release the ETCS emergency brake when the actual speed is below the permitted speed.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment123",
+    "requirement id": 123,
+    "description": "To protect a traction unit from roll away and unwanted reverse movements the trainborne equipment shall monitor the direction of movement in relation to the permitted direction.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment124",
+    "requirement id": 124,
+    "description": "The trainborne equipment shall apply the emergency brake after a distance, defined by a national value, is travelled by the train.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment125",
+    "requirement id": 125,
+    "description": "The roll away/reverse movement intervention shall be indicated on the DMI.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment126",
+    "requirement id": 126,
+    "description": "When the traction unit has come to a standstill, the driver shall be able to release the emergency brake.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment127",
+    "requirement id": 127,
+    "description": "After releasing the emergency brake ETCS will provide the supervision appertaining when roll away protection was initiated",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment128",
+    "requirement id": 128,
+    "description": "When using more than one traction unit this function shall be disabled in all but the leading traction unit.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment129",
+    "requirement id": 129,
+    "description": "All data entered, received or indicated to the driver shall be recorded onboard. All data shall be related to UTC (Universal Time Corrected) and a reference point.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment130",
+    "requirement id": 130,
+    "description": "Information shall be recorded to an accuracy which enables a clear view of the functioning of ETCS and way the traction unit has been driven.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment131",
+    "requirement id": 131,
+    "description": "Standardised output interfaces shall enable transmission of information recorded to other media for investigation",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment132",
+    "requirement id": 132,
+    "description": "The retention period for the recorded data will be different and two levels are foreseen:\n\nData to enable investigation of accidents need only be stored for at least 24 hours, and shall be very detailed.\nOperational data to enable assessment of driver performance shall be stored for at least one week.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment133",
+    "requirement id": 133,
+    "description": "The following information shall be recorded:\n\nany transition of Level and of operational status\nthe driver's confirmation of transition to shunting\ntrain supervision data and information received from national train control systems\nactual speed\nfull service brake intervention\nemergency brake intervention\napplying the train trip function\nselection of the override control\noverride of the route suitability function\nisolation of on board ETCS equipmen\ndata entered, recieved or indicated to the driver",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment134",
+    "requirement id": 134,
+    "description": "It shall be possible to use multiple traction units without isolating the ETCS trainborne equipment on traction unit(s) with an in-operative cab.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment135",
+    "requirement id": 135,
+    "description": "Information received shall not influence the traction unit(s) with in-operative cabs.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment136",
+    "requirement id": 136,
+    "description": "The train trip function 4.6.12 shall be suppressed in traction unit(s) with in-operative cabs.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment137",
+    "requirement id": 137,
+    "description": "It shall be possible to use tandem traction units without isolating the ETCS trainborne equipment on the tandem traction unit.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment138",
+    "requirement id": 138,
+    "description": "The train trip function 4.6.12 shall be suppressed on the tandem traction unit.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment139",
+    "requirement id": 139,
+    "description": "The driver shall enter the driver ID",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment140",
+    "requirement id": 140,
+    "description": "It shall be possible to drive the train backwards in a supervised way (speed and distance) according to information received from trackside",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment141",
+    "requirement id": 141,
+    "description": "The train speed shall be at or below a speed specified by a national value.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment142",
+    "requirement id": 142,
+    "description": "The driver shall select an override control according to the permission received.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment143",
+    "requirement id": 143,
+    "description": "The override control shall be protected against inadvertent operation.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment144",
+    "requirement id": 144,
+    "description": "When the train passes the stop signal, the train trip function shall be suppressed.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment145",
+    "requirement id": 145,
+    "description": "Actual speed shall still be shown on the DMI.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment146",
+    "requirement id": 146,
+    "description": "A special indication shall be shown on the DMI.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment147",
+    "requirement id": 147,
+    "description": "The supervised speed shall not be shown on the DMI.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment148",
+    "requirement id": 148,
+    "description": "The train shall be capable of receiving any track-to-train information intended and relevant for this train including movement authority.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment149",
+    "requirement id": 149,
+    "description": "If supervised by an RBC it shall be possible to command an emergency stop to all trains in a particular area or to a specific train",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment150",
+    "requirement id": 150,
+    "description": "It shall be possible to command an immediate train stop.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment151",
+    "requirement id": 151,
+    "description": "It shall be possible to command a conditional emergency stop. If the train has already passed the location for the emergency stop the command shall be ignored",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment152",
+    "requirement id": 152,
+    "description": "When a train has received an emergency stop ETCS shall command the emergency brake.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment153",
+    "requirement id": 153,
+    "description": "The emergency stop shall be indicated to the driver on the DMI.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment154",
+    "requirement id": 154,
+    "description": "It shall be possible to prevent a train from entering a route for which it does not meet the required criteria.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment155",
+    "requirement id": 155,
+    "description": "Route unsuitability shall be indicated on the DMI.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment156",
+    "requirement id": 156,
+    "description": "The driver shall be able to override the function when the train is stationary.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment157",
+    "requirement id": 157,
+    "description": "After overriding this function the movement authority shall be re-established.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment158",
+    "requirement id": 158,
+    "description": "When a traction unit passes a stop-signal the emergency brake shall be triggered.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment159",
+    "requirement id": 159,
+    "description": "Operation of the train trip shall be indicated on the DMI.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment160",
+    "requirement id": 160,
+    "description": "The emergency brake shall be applied until the traction unit is stationary.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment161",
+    "requirement id": 161,
+    "description": "When the traction unit is stationary the driver shall be required to acknowledge the train trip condition. This acknowledgement will release the emergency brake.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment162",
+    "requirement id": 162,
+    "description": "After the acknowledgement the driver shall be able to continue the movement",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment163",
+    "requirement id": 163,
+    "description": "After the acknowledgement the train shall be able to be driven backwards for a certain distance defined by national value",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment164",
+    "requirement id": 164,
+    "description": "The ETCS trainborne equipment shall transmit its own train identification to the RBC.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment165",
+    "requirement id": 165,
+    "description": "The train running number shall consist of a maximum of 8 numeric digits.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment166",
+    "requirement id": 166,
+    "description": "On demand, the position of the front end of the train at the time of the demand shall be indicated on the DMI. This shall be possible while the train is moving or stationary.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment167",
+    "requirement id": 167,
+    "description": "The ETCS on-board shall be capable of receiving information about pantograph and power supply from the trackside.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment168",
+    "requirement id": 168,
+    "description": "The ETCS trainborne equipment shall indicate on the DMI the information regarding pantograph and power supply.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment169",
+    "requirement id": 169,
+    "description": "The information regarding lowering and raising of the pantograph and opening/closing of the circuit breaker shall be provided separately and in combinations.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment170",
+    "requirement id": 170,
+    "description": "The ETCS on-board shall be capable of receiving information regarding air tightness from the trackside.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment171",
+    "requirement id": 171,
+    "description": "It shall be possible to send plain text messages from track to train.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment172",
+    "requirement id": 172,
+    "description": "When the plain text message appears on the DMI, the driver shall be alerted.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment173",
+    "requirement id": 173,
+    "description": "The onboard equipment shall display plain text messages as received.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment174",
+    "requirement id": 174,
+    "description": "The character set used shall support different languages.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment175",
+    "requirement id": 175,
+    "description": "It shall be possible to send fixed text messages from track to train",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment176",
+    "requirement id": 176,
+    "description": "Fixed text messages shall be provided in the language selected by the driver",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment177",
+    "requirement id": 177,
+    "description": "It shall be possible to send information regarding the inhibition of the following different types of brake:\n\nRegenerative brake\nEddy current brake\nMagnetic shoe brake",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment178",
+    "requirement id": 178,
+    "description": "Information shall be shown on the DMI",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment179",
+    "requirement id": 179,
+    "description": "The ETCS on-board shall be capable of sending to the trackside train integrity information detected by a system outside ETCS",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment180",
+    "requirement id": 180,
+    "description": "The driver shall be able to confirm the train integrity to the RBC manually. The confirmation requires the train to be stationary.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment181",
+    "requirement id": 181,
+    "description": "The on board shall be capable of sending train data to the trackside after confirmation by the driver, or when entering the RBC area",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment182",
+    "requirement id": 182,
+    "description": "The following train data shall be sent from the on board to the trackside:\n\t\nTrain running number\nSTM ready for use\ntrain gauge\nMax. axle load\nstatus of air tight system\ntype of el. power accepted\ninternational train category\nmax. train speed\ntrain length",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment183",
+    "requirement id": 183,
+    "description": "It shall be possible to revoke a Movement Authority that has already been issued to a train in a co-operative way between RBC and train.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment184",
+    "requirement id": 184,
+    "description": "The co-operative revocation of the MA shall be possible to a new target location, proposed from RBC.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment185",
+    "requirement id": 185,
+    "description": "The new target location shall be checked for acceptance by the on board.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment186",
+    "requirement id": 186,
+    "description": "If a train cannot stop at the proposed new target location it shall reject the request and keep the old target location.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment187",
+    "requirement id": 187,
+    "description": "The Reversing function shall only be possible in one active cab which is not closed at any time during the procedure.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment188",
+    "requirement id": 188,
+    "description": "Reversing shall be possible as defined by a value given with the MA",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment189",
+    "requirement id": 189,
+    "description": "The driver shall be able to use the Reversing function without needing to re-confirm the train data.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment190",
+    "requirement id": 190,
+    "description": "Reversing shall be supervised to a distance and speed set as National Values",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment191",
+    "requirement id": 191,
+    "description": "The distance supervised can be extended from the trackside.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment192",
+    "requirement id": 192,
+    "description": "Once the train starts reversing the MA shall be cancelled.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment193",
+    "requirement id": 193,
+    "description": "The train shall be able to automatically pass from one RBC area to another without driver intervention.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment194",
+    "requirement id": 194,
+    "description": "If the train is equipped with two operational radios there shall be no performance penalty as a result of a transition from one RBC to another (train spacing and train speed).",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment195",
+    "requirement id": 195,
+    "description": "If the train is equipped with only one operational radio, passing from one RBC to another shall still be possible but might result in a performance penalty.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment196",
+    "requirement id": 196,
+    "description": "In the event of a Transmission Failure the following reactions, shall be capable of being applied in accordance with a National Value:\n\t\nOption 1. The ETCS trainborne equipment shall immediately command the emergency brake. The failure shall be shown on the DMI.\nOption 2. The ETCS trainborne equipment shall immediately command the full service brake. The failure shall be shown on the DMI.\nOption 3. The train may proceed unrestricted to the end of its movement authority. The indication on the DMI shall remain, and the driver shall be informed about the loss of transmission.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment197",
+    "requirement id": 197,
+    "description": "If there are failures of the trainborne equipment which compromise the safety of train supervision, the ETCS trainborne equipment shall immediately command the brake and bring the train to a stop.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment198",
+    "requirement id": 198,
+    "description": "The occurrence of a failure shall be displayed on the DMI.",
+    "type": "functional",
+    "project": "ertms"
+  },
+  {
+    "title": "requirment199",
+    "requirement id": 199,
+    "description": "In ETCS with RBC this restriction on performance shall, if possible be transmitted to the RBC.",
+    "type": "functional",
+    "project": "ertms"
+  }
+]

@@ -1,0 +1,170 @@
+[
+  {
+    "title": "requirment1",
+    "requirement id": 1,
+    "description": "The format for service information description is defined",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment2",
+    "requirement id": 2,
+    "description": "The format for service information description is defined",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment3",
+    "requirement id": 3,
+    "description": "The interaction protocol between Web Server-SR, SR-mediator is defined.",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment4",
+    "requirement id": 4,
+    "description": "Resource provisioning, delegation and reservation policies are in place",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment5",
+    "requirement id": 5,
+    "description": "There is an established norm that any resource failure will be reported",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment6",
+    "requirement id": 6,
+    "description": "The interaction protocol between Web Server-SR, SR-mediator is defined.",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment7",
+    "requirement id": 7,
+    "description": "Malicious requests are detected and rejected.",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment8",
+    "requirement id": 8,
+    "description": "Web servers have already replicated necessary content.",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment9",
+    "requirement id": 9,
+    "description": "Both anticipated and unanticipated user requests (traffic) are considered.",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment10",
+    "requirement id": 10,
+    "description": "The format for service information description is defined",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment11",
+    "requirement id": 11,
+    "description": "The format of service requirements is defined.",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment12",
+    "requirement id": 12,
+    "description": "Mediator-SR, mediator-PR, mediator-PA interaction protocols are defined.",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment13",
+    "requirement id": 13,
+    "description": "Mediator works in conjunction with the PA to establish negotiation.",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment14",
+    "requirement id": 14,
+    "description": "Interaction protocols between PAs are identified.",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment15",
+    "requirement id": 15,
+    "description": "Malicious requests are identified and acted upon.",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment16",
+    "requirement id": 16,
+    "description": "There are existing policies for long-term peering arrangement.",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment17",
+    "requirement id": 17,
+    "description": "There is procedure to perform short-term negotiation.",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment18",
+    "requirement id": 18,
+    "description": "Negotiation is established between selected CDN peers.",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment19",
+    "requirement id": 19,
+    "description": "Primary CDN has already acquired sufficient external resources.",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment20",
+    "requirement id": 20,
+    "description": "Functional policies are identified and deployed.",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment21",
+    "requirement id": 21,
+    "description": "Effective content delivery is ensured through SLA satisfaction.",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment22",
+    "requirement id": 22,
+    "description": "Policies identifying the consequences of SLA violation are defined.",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment23",
+    "requirement id": 23,
+    "description": "Policies are in place to perform renegotiation for problem resolution.",
+    "type": "functional",
+    "project": "peering"
+  },
+  {
+    "title": "requirment24",
+    "requirement id": 24,
+    "description": "Policies are in place to perform renegotiation for problem resolution.",
+    "type": "functional",
+    "project": "peering"
+  }
+]
