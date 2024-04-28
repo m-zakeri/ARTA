@@ -12,9 +12,9 @@ More information are available in the [project documentation website](https://m-
 ## Demo
 
 ARTA is a research project at [IUST Reverse Engineering Laboratory](http://reverse.iust.ac.ir/).
-An online demo of ARAT is available on 
+An online demo of ARTA is available on 
 [http://arta.iust-parsa.ir/](http://arta.iust-parsa.ir/).
-You can log-in with following credential:
+You can login with following credential:
 
  * Demo username: User
  * Demo password: arta@IUST
@@ -147,11 +147,15 @@ python manage.py insert_date <location of json file> <a project name for this da
 - [Dataset 2 (available in txt format - needs vpn)](https://www.kaggle.com/iamsouvik/software-requirements-dataset/data)
 
 
-## Release date
+## Publication(s)
 
-The **full version of source code** will be available as soon as the *relevant paper(s) are published*.
+* [1] **Zakeri-Nasrabadi, M.**, & Parsa, S. (2024). **Natural language requirements testability measurement based on requirement smells**. Neural Computing and Applications. [https://doi.org/10.1007/s00521-024-09730-x](https://doi.org/10.1007/s00521-024-09730-x)
 
-**Update:** The manuscript is under review in Neural Computing and Applications
+## News
+
+* **2024-04-28:** The ARTA (automated requirements testability analyzer) tool's full implementation is now publicly available.
+
+* **2021-10-20:** Initial/partial release. The full version of source code will be available as soon as the relevant paper(s) are published.
 
 
 ## Read more

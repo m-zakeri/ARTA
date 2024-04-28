@@ -2,9 +2,9 @@
 
 **Morteza Zakeri**†
 
-† Ph.D. Student, Iran University of Science and Technology, Tehran, Iran (m-zakeri@live.com).
+† Ph.D., Computer Science, ACM Member
 
-Version 0.1.2 (20, March 2021) ├ Download [PDF] version
+Version 0.1.3 (20, April 2024) ├ Download [PDF] version
 
 
 **Abstract—** Software testability is the propensity of software artifact to reveal its existing defects. Software requirements are crucial artifacts in developing software. Requirements specifications are used in both the functional and acceptance testing to ensure that a program meets its requirements. 
@@ -22,9 +22,9 @@ Unfortunately, there is no publicly available tool and benchmark to detect requi
 
 ## 2 Tool support
 ARTA is a web-based software requirement analysis tool using the state-of-the-art natural language processing (NLP) and statistical machine learning techniques to analyze the software requirement.  
-An online demo of ARAT is available on 
+An online demo of ARTA is available on 
 [http://arta.iust-parsa.ir/](http://arta.iust-parsa.ir/).
-You can log-in with following credential:
+You can login with following credential:
 
  * Demo username: User
  * Demo password: arta@IUST
@@ -62,11 +62,16 @@ Figure 3 shows ARTA database ERD model. All projects and their requirements are 
 *Figure 3: ARTA data model*
 
 
+## 3 Publication(s)
 
+* [1] **Zakeri-Nasrabadi, M.**, & Parsa, S. (2024). **Natural language requirements testability measurement based on requirement smells**. Neural Computing and Applications. [https://doi.org/10.1007/s00521-024-09730-x](https://doi.org/10.1007/s00521-024-09730-x)
 
-## 3 Release date
+## 4 News
 
-The full version of source code will be available as soon as the relevant paper(s) are published.
+* **2024-04-28:** The ARTA (automated requirements testability analyzer) tool's full implementation is now publicly available.
+
+* **2021-10-20:** Initial/partial release. The full version of source code will be available as soon as the relevant paper(s) are published.
+
 
 
 ## 4 FAQ
