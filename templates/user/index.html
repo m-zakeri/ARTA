@@ -1,0 +1,62 @@
+{% extends "base_template.html" %}
+{% load url_params %}
+{% block title %}Index{% endblock %}
+{% block content %}
+    {% load admin_urls %}
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="jumbotron .bg-light">
+                <h1 class="display-4">Welcome to ARTA</h1>
+                <p class="lead">About ARTA</p>
+                <hr class="my-4">
+                <p>ARTA is a web-application used for detecting software requirement smells and measuring software requirement testability.</p>
+                <a class="btn btn-outline-dark btn-lg" href="http://reverse.iust.ac.ir/" target="_blank"
+                   role="button">
+                    Read more
+                </a>
+
+                 <hr class="my-4">
+                <h3 class="display-4">Publications</h3>
+                <p class="lead">Papers behind ARTA project</p>
+                <hr class="my-4">
+                <ul>
+                    <li>
+                        <p class="lead">Requirement testability measurement based on requirement smells </p>
+                        <p>Morteza ZAKERI NASRABADI and Saeed PARSA</p>
+                    </li>
+                </ul>
+                <a class="btn btn-outline-dark btn-lg"
+                   href="http://reverse.iust.ac.ir/" role="button" target="_blank">IUST Reverse Engineering Lab</a>
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="jumbotron" style="background-color: orange">
+                <h1 class="display-6">Projects</h1>
+                <p class="lead">Projects dashboard</p>
+                <hr class="my-6">
+                <p>Manage your software projects</p>
+                <a class="btn btn-outline-dark btn-lg" href="{% url 'projects_list_view' %}"
+                   role="button">
+                    View Projects
+                </a>
+            </div>
+
+            <div class="jumbotron bg-primary" style="background-color: blue">
+                <h1 class="display-6">Requirements</h1>
+                <p class="lead">Requirements dashboard</p>
+                <hr class="my-6">
+                <p>Manage your project's requirements</p>
+                <a class="btn btn-outline-dark btn-lg" href="{% url 'requirement_list_view' %}" role="button">View
+                    Requirements</a>
+                <a class="btn btn-outline-dark btn-lg"
+                   href="{% url 'requirement_list_view' %}{% url_params have_smell=1 %}" role="button">
+                    ViewARTA
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

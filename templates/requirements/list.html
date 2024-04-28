@@ -1,0 +1,103 @@
+{% extends "base_template.html" %}
+{% load url_params %}
+{% block title %}Requirements List{% endblock %}
+{% block content %}
+    <div class="row-cols-1">
+        <div class="col-md-12">
+            <h1>Requirement List</h1>
+            <a class="btn btn-outline-primary btn-lg" href="{% url 'requirement_create_view' %}" role="button">
+                Add Requirement
+            </a>
+            {% if request.GET.have_smell == '1' %}
+                <a class="btn btn-outline-danger btn-lg"
+                   href="{% url 'requirement_list_view' %}{% url_params have_smell=0 %}" role="button">
+                    Show All Requirements
+                </a>
+            {% else %}
+                <a class="btn btn-outline-danger btn-lg"
+                   href="{% url 'requirement_list_view' %}{% url_params have_smell=1 %}"
+                   role="button">
+                    Show Requirements with Smell
+                </a>
+            {% endif %}
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        {% if messages %}
+            <div class="col-md-12">
+            {% for message in messages %}
+                {% if 'created' in message.message %}
+                    <div class="alert alert-success" role="alert">
+                        {{ message }}
+                    </div>
+                {% elif 'deleted' in message.message %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                    </div>
+                {% elif 'edited' in message.message %}
+                    <div class="alert alert-info" role="alert">
+                        {{ message }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <div class="col-md-12">
+            {% if requirements %}
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Project</th>
+                        <th scope="col">Smell</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for requirement in requirements %}
+                        <tr>
+                            <th scope="row">
+                                <a href="{% url 'requirement_detail_view' pk=requirement.id %}">
+                                    {{ requirement.number }}
+                                </a>
+                            </th>
+                            <td>{{ requirement.title }}</td>
+                            <td>{{ requirement.description }}</td>
+                            <td>{{ requirement.get_requirement_type_display }}</td>
+                            <td>{{ requirement.project }}</td>
+                            <td>{{ requirement.smell_count }}</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-info">
+                                        <a href="{% url 'requirement_detail_view' requirement.id %}"
+                                           class="btn-info">
+                                            View
+                                        </a>
+                                    </button>
+                                    <button type="button" class="btn btn-danger">
+                                        <a href="{% url 'requirement_delete_view' requirement.id %}"
+                                           class="btn-danger">
+                                            Delete
+                                        </a>
+                                    </button>
+                                    <button type="button" class="btn btn-dark">
+                                        <a href="{% url 'requirement_update_view' requirement.id %}"
+                                           class="btn-dark">
+                                            Edit
+                                        </a>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <h6>No requirements!</h6>
+            {% endif %}
+        </div>
+        </div>
+{% endblock %}

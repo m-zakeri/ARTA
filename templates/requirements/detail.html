@@ -1,0 +1,224 @@
+{% extends "base_template.html" %}
+{% load mathfilters %}
+{% block title %}Requirement - {{ requirement.number }}{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <h1>{{ requirement.title.title }}</h1>
+            <h4>Requirement ID: {{ requirement.number }}</h4>
+            <h5>Type: {{ requirement.get_requirement_type_display.title }}</h5>
+            <h5>Project Name: {{ requirement.project.name.title }}</h5>
+            <h5>Created At: {{ requirement.project.created_date }}</h5>
+            <p>Requirement size: {{ word_size }} words</p>
+            <a class="btn btn-outline-info btn-lg"
+               href="{% url 'requirement_update_view' requirement.id %}" role="button">
+                Edit Requirement
+            </a>
+            <a class="btn btn-outline-danger btn-lg"
+               href="{% url 'requirement_delete_view' requirement.id %}" role="button">
+                Delete Requirement
+            </a>
+            <h5 class="pt-4">Quality metrics</h5>
+            <h6 align="left">Testability:</h6>
+            <div class="progress" style="height: 25px;">
+                <div class="progress-bar bg-primary" role="progressbar" style="width: {{requirement.testability|mul:100 }}%;"
+                     aria-valuenow="{{ requirement.testability }}"
+                     aria-valuemin="0"
+                     aria-valuemax="1">{{ requirement.testability|floatformat:4 }}
+                </div>
+            </div>
+
+            <h6 align="left">Cleanness:</h6>
+            <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width: {{ requirement.cleanness|mul:100 }}%;"
+                     aria-valuenow="{{ requirement.cleanness }}"
+                     aria-valuemin="0"
+                     aria-valuemax="1">{{ requirement.cleanness|floatformat:4 }}
+                </div>
+            </div>
+
+            <h6 align="left">Score:</h6>
+            <div class="progress">
+                <div class="progress-bar bg-success" role="progressbar" style="width: {{ requirement.score }}%;"
+                     aria-valuenow="{{ requirement.score }}"
+                     aria-valuemin="0"
+                     aria-valuemax="100">{{ requirement.score|floatformat:2 }}%
+                </div>
+            </div>
+            <h6 align="left">Polarity:</h6>
+            <div class="progress">
+                <div class="progress-bar bg-info" role="progressbar" style="width: {{ requirement.polarity }}%;"
+                     aria-valuenow="{{ requirement.polarity }}"
+                     aria-valuemin="0"
+                     aria-valuemax="100">{{ requirement.polarity|floatformat:2 }}%
+                </div>
+            </div>
+            <h6 align="left">Subjectivity:</h6>
+            <div class="progress">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: {{ requirement.subjectivity }}%;"
+                     aria-valuenow="{{ requirement.subjectivity }}"
+                     aria-valuemin="0"
+                     aria-valuemax="100">{{ requirement.subjectivity|floatformat:2 }}%
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <h2>Description:</h2>
+            <p class="requirement_content" id="main-requirement">{{ requirement.description }}</p>
+            {% autoescape off %}
+                {% for smell in requirement.smells.all %}
+                    {{ smell.render_smell }}
+                {% endfor %}
+            {% endautoescape %}
+            {% if requirement.smells.count %}
+                <h3>Smells:</h3>
+                <p>Number of detected smells: {{ requirement.smells.count }}</p>
+                <table class="table">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Smell</th>
+                        <th scope="col">Smell Title</th>
+                        <th scope="col">Smell Description</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for smell in requirement.smells.all %}
+                        <tr>
+                            <td id="smell_{{ smell.id }}">
+                            </td>
+                            <script>
+                                var element = document.getElementById("smell_" + {{ smell.id }});
+                                var requirement = "{{ requirement.description }}";
+                                element.textContent = requirement.slice({{ smell.index_start }},
+                                    {{smell.index_stop}});
+                            </script>
+                            <td>
+                                <p>{{ smell.smell.title }}</p>
+                                <p class="text-secondary small">hint: {{ smell.smell.tip }}</p>
+                            </td>
+                            <td>{{ smell.smell.description }}</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="comment">
+                                    <button type="button" class="btn btn-warning" data-toggle="modal"
+                                            data-target="#commentsModal" onclick="commentOnClick({{ smell.id }})">
+                                        Comment
+                                    </button>
+                                    <button type="button" class="btn btn-primary">Not Smell</button>
+                                    <button id="btn_{{ smell.id }}" type="button"
+                                            class="btn btn-danger smell-btn" onclick="showSmell({{ smell.id }})">
+                                        Show
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="text-monospace">No Smell detected</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="modal fade" id="commentsModal" tabindex="-1" role="dialog" aria-labelledby="commentsModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="commentsModalLabel">Comments</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="" id="commentsFrame"
+                                sandbox="allow-same-origin allow-scripts"></iframe>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_content"></label>
+                        <input type="email" class="form-control" id="id_content" aria-describedby="commentHelp"
+                               placeholder="Enter Your Comment">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="sendCommentOnClick()">Send Comment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script>
+
+        var findingId = 0;
+
+        function hideElements() {
+            var elements = document.getElementsByClassName("requirement_content");
+            for (i = 0; i < elements.length; i++) {
+                elements[i].hidden = true;
+            }
+        }
+
+        function resetButtons() {
+            var elements = document.getElementsByClassName("btn btn-success smell-btn");
+            for (i = 0; i < elements.length; i++) {
+                elements[i].innerText = 'Show';
+                elements[i].className = "btn btn-danger smell-btn";
+            }
+        }
+
+        function changeButton(id) {
+            hideElements();
+            var element = document.getElementById("btn_" + id);
+            let innerText = element.innerText;
+            var req_element = document.getElementById("finding_" + id);
+            resetButtons();
+            if (innerText === 'Show') {
+                element.innerText = 'Hide';
+                element.className = "btn btn-success smell-btn"
+                req_element.hidden = false;
+            } else {
+                element.innerText = 'Show'
+                element.className = "btn btn-danger smell-btn"
+                req_element.hidden = true;
+                document.getElementById("main-requirement").hidden = false;
+            }
+        }
+
+        function showSmell(id) {
+            changeButton(id);
+        }
+
+        function commentOnClick(id) {
+            findingId = id;
+            var element = document.getElementById("commentsFrame");
+            element.src = "{% url 'comments_list_view' %}" + id;
+        }
+
+        function sendCommentOnClick() {
+            var element = document.getElementById("id_content");
+            var url = "{% url 'comments_create_view' %}";
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("POST", url, true);
+            xmlhttp.setRequestHeader("Content-type", "application/json");
+            xmlhttp.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+                    let frame = document.getElementById('commentsFrame');
+                    frame.contentWindow.location.reload();
+                    element.value = '';
+                }
+            };
+            var post = {
+                'finding': findingId,
+                'content': element.value
+            }
+            xmlhttp.send(JSON.stringify(post));
+        }
+    </script>
+{% endblock %}

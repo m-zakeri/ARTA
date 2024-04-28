@@ -1,0 +1,36 @@
+{% extends "base_template.html" %}
+{% load widget_tweaks %}
+{% block title %}Edit Requirement{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Edit Requirement</h1>
+        </div>
+        <div class="col-md-8">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.title.label_tag }}
+                    {% render_field form.title class+="form-control" %}
+                </div>
+                <div class="form-group">
+                    {{ form.number.label_tag }}
+                    {% render_field form.number class+="form-control" %}
+                </div>
+                <div class="form-group">
+                    {{ form.description.label_tag }}
+                    {% render_field form.description class+="form-control" %}
+                </div>
+                <div class="form-group">
+                    {{ form.requirement_type.label_tag }}
+                    {% render_field form.requirement_type class+="form-control" %}
+                </div>
+                <div class="form-group">
+                    {{ form.project.label_tag }}
+                    {% render_field form.project class+="form-control" %}
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

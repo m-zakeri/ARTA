@@ -1,0 +1,108 @@
+{% extends "base_template.html" %}
+{% block title %}Projects List{% endblock %}
+{% block content %}
+    <div class="row-cols-1">
+        <div class="col-md-12">
+            <h1>Projects List</h1>
+            <a class="btn btn-outline-primary btn-lg" href="{% url 'projects_create_view' %}" role="button">
+                Add project
+            </a>
+            <a class="btn btn-outline-primary btn-lg" href="{% url 'projects_import_view' %}" role="button">
+                Import project
+            </a>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        {% if messages %}
+            <div class="col-md-12">
+                {% for message in messages %}
+                    {% if 'created' in message.message or 'inserted' in message.message %}
+                        <div class="alert alert-success" role="alert">
+                            {{ message }}
+                        </div>
+                    {% elif 'deleted' in message.message or 'xlsx' in message.message %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ message }}
+                        </div>
+                    {% elif 'edited' in message.message %}
+                        <div class="alert alert-info" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% for project in projects %}
+            <div class="col-md-3 py-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">{{ project.name.title }}</h5>
+                    </div>
+
+                    <div class="card-body">
+                        {% if project.description %}
+                            <p class="card-text">{{ project.description }}</p>
+                        {% else %}
+                            <p class="card-text">No Description</p>
+                        {% endif %}
+                        <p class="card-text">Created Date: {{ project.created_date }}</p>
+                        <p class="card-text">Modified Date: {{ project.modified_date }}</p>
+                        <p class="card-text">Number of Requirements: {{ project.requirements.count }}</p>
+                        {% if project.smells_count %}
+                            <p>{{ project.smells_count }} Smells Detected </p>
+                        {% else %}
+                            <p>No Smell Detected</p>
+                        {% endif %}
+                        <h5 class="pt-4">Scores: </h5>
+                        <h6>Score:</h6>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar"
+                                 style="width: {{ project.score }}%;"
+                                 aria-valuenow="{{ project.score }}"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100.00">{{ project.score|floatformat:2 }}%
+                            </div>
+                        </div>
+                        <h6>Polarity:</h6>
+                        <div class="progress">
+                            <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: {{ project.polarity }}%;"
+                                 aria-valuenow="{{ project.polarity }}"
+                                 aria-valuemin="-1"
+                                 aria-valuemax="1">{{ project.polarity|floatformat:2 }}
+                            </div>
+                        </div>
+                        <h6>Subjectivity:</h6>
+                        <div class="progress">
+                            <div class="progress-bar bg-warning" role="progressbar"
+                                 style="width: {{ project.subjectivity }}%;"
+                                 aria-valuenow="{{ project.subjectivity }}"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100">{{ project.subjectivity|floatformat:2 }}%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <a class="btn btn-outline-primary btn-lg" href="{% url 'projects_update_view' project.id %}"
+                           role="button">
+                            Edit
+                        </a>
+                        <a class="btn btn-outline-danger btn-lg" href="{% url 'projects_delete_view' project.id %}"
+                           role="button">
+                            Delete
+                        </a>
+                        <a class="btn btn-outline-dark btn-lg"
+                           href="{% url 'requirement_list_view' %}?project_id={{ project.id }}" role="button">
+                            View Requirements
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <h6>No projects create one!</h6>
+        {% endfor %}
+    </div>
+{% endblock %}

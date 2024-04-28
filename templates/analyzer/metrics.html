@@ -1,0 +1,206 @@
+{% extends "base_template.html" %}
+{% block title %}Metrics{% endblock %}
+{% block style %}
+    <style>
+        .bg-positive {
+            background-color: #ade498
+        }
+
+        .bg-negative {
+            background-color: #e7305b;
+        }
+
+        .bg-count {
+            background-color: #8c9eff;
+        }
+
+        .bg-p-rate {
+            background-color: #039be5;
+        }
+
+        .bg-n-rate {
+            background-color: #e36387;
+        }
+
+        .bg-accuracy {
+            background-color: #febf63;
+        }
+
+        .bg-precision {
+            background-color: #7fdbda;
+        }
+
+        .bg-recall {
+            background-color: #ffe0f7;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="row pb-2">
+        {% if msg %}
+            <div class="col-md-12">
+                <h3>{{ msg }}</h3>
+            </div>
+        {% else %}
+            <div class="col-md-2">
+                <div class="card bg-count">
+                    <div class="card-body">
+                        <h5 class="card-title">Total reviewed findings which detected by ARTA: </h5>
+                        <p>{{ total_findings }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card bg-positive">
+                    <div class="card-body">
+                        <h5 class="card-title">True Positive (TP)</h5>
+                        <p class="card-text">the findings that detected By ARTA correctly</p>
+                    </div>
+                    <div class="card-footer">
+                        <p>TP = {{ true_positive }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="card bg-negative">
+                    <div class="card-body">
+                        <h5 class="card-title">False Positive (FP)</h5>
+                        <p class="card-text">the findings that detected By ARTA which is wrong</p>
+                    </div>
+                    <div class="card-footer">
+                        <p>FP = {{ false_positive }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="card bg-negative">
+                    <div class="card-body">
+                        <h5 class="card-title">False Negative (FN)</h5>
+                        <p class="card-text">the smells which not recognized by ARTA</p>
+                    </div>
+                    <div class="card-footer">
+                        <p>FN = {{ false_negative }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card bg-precision">
+                    <div class="card-body">
+                        <h5 class="card-title">Precision</h5>
+                        <p>{{ precision }}</p>
+                    </div>
+                </div>
+                <a type="button" class="mt-2 btn btn-outline-primary" href="{% url 'excel_view' 'true' %}">Get Dataset
+                    with smells detected by experts</a>
+            </div>
+            <div class="col-md-2">
+                <div class="card bg-recall">
+                    <div class="card-body">
+                        <h5 class="card-title">Recall</h5>
+                        <p>{{ recall }}</p>
+                    </div>
+                </div>
+                <a type="button" class="mt-2 btn btn-outline-primary" href="{% url 'excel_view' 'false' %}">Get Dataset
+                    with smells detected by ARTA</a>
+            </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <h2>Precision and Recall grouped By Smells</h2>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Smell Name</th>
+                            <th scope="col">Smell Precision</th>
+                            <th scope="col">Smell Recall</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for key, value in smells.items %}
+                            <tr>
+                                <td>{{ key }}</td>
+                                {% if value.precision > 1 %}
+                                    <td>1</td>
+                                {% else %}
+                                    <td>{{ value.precision }}</td>
+                                {% endif %}
+                                {% if value.recall > 1 %}
+                                    <td>1</td>
+                                {% else %}
+                                    <td>{{ value.recall }}</td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+
+
+            <div class="col-md-6 pt-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Variation of size of requirements artifacts in words</h5>
+                    </div>
+                    <div class="card-body">
+                        <img class="card-img" src="{% url 'size_fig_view' %}" alt="size_figure">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 pt-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Relation between size of projects and number of smells</h5>
+                    </div>
+                    <div class="card-body">
+                        <img class="card-img" src="{% url 'smell_rel_fig_view' %}" alt="size_figure">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 pt-2">
+                <h2>Tree Map Diagrams</h2>
+                <ul class="nav nav-tabs">
+                    {% for project in projects %}
+                        <li class="nav-item">
+                            <a onclick="treeOnClick('{{ project }}')" class="nav-link"
+                               id="nav_{{ project }}">
+                                {{ project }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+            <div class="col-md-12 pt-2">
+                <img id="treeImg" alt="tree-diagram" class="img-fluid" hidden>
+            </div>
+        {% endif %}
+        </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        function resetButton() {
+            var elements = document.getElementsByClassName("nav-link active");
+            for (i = 0; i < elements.length; i++) {
+                elements[i].className = "nav-link";
+            }
+        }
+
+        function treeOnClick(project) {
+            resetButton();
+            var nav = document.getElementById('nav_' + project);
+            var img = document.getElementById("treeImg");
+            nav.className = "nav-link active";
+            img.hidden = false;
+            img.src = "/analyze/tree_map_view/" + project;
+        }
+    </script>
+{% endblock %}

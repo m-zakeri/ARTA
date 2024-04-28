@@ -1,0 +1,32 @@
+{% extends "base_template.html" %}
+{% block title %}Signup{% endblock %}
+{% load widget_tweaks %}
+{% block content %}
+    <div class="row">
+        <div class="offset-md-4"></div>
+        <div class="col-md-4">
+            <h2 class="py-2">Enter your credential</h2>
+            <form method="post" action="{% url 'login-view' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.username.label_tag }}
+                    {% render_field form.username class+="form-control" %}
+                </div>
+                <div class="form-group">
+                    {{ form.email.label_tag }}
+                    {% render_field form.email class+="form-control" %}
+                </div>
+                <div class="form-group">
+                    {{ form.password1.label_tag }}
+                    {% render_field form.password1 class+="form-control" %}
+                </div>
+                <div class="form-group">
+                    {{ form.password2.label_tag }}
+                    {% render_field form.password2 class+="form-control" %}
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="offset-md-4"></div>
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base_template.html" %}
+{% block title %}Login{% endblock %}
+{% load widget_tweaks %}
+{% block content %}
+    <div class="row">
+        <div class="offset-md-4"></div>
+        <div class="col-md-4">
+            <h2 class="py-1 text-center text-info">Weclome to IUST Automatic Requirement Testability Analyzer (ARTA)</h2>
+            <h3 class="py-1 text-center text-warning">BETA Release</h3>
+            <h5 class="py-1 text-center ">
+                Contributors:
+                <a href="https://m-zakeri.github.io/" target="_blank"> Morteza Zakeri </a>
+                and
+                 <a href="http://parsa.iust.ac.ir/" target="_blank"> Saeed Parsa </a>
+            </h5>
+
+            <h2 class="py-4">Enter your credential</h2>
+
+            <p>Demo username: User   </p>
+            <p>Demo password: arta@IUST</p>
+            <p></p>
+
+            <form method="post" action="{% url 'login-view' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.username.label_tag }}
+                    {% render_field form.username class+="form-control" %}
+                </div>
+                <div class="form-group">
+                    {{ form.password.label_tag }}
+                    {% render_field form.password class+="form-control" %}
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <!--<p class="py-2">Don't have a account? <a href="{% url 'signup-view' %}">click here</a></p>-->
+            <p> </p>
+            <p> Maintainer: Morteza Zakeri (<a href="mailto:morteza_zakeri@comp.iust.ac.ir">morteza_zakeri@comp.iust.ac.ir</a>) </p>
+            <p>Source code: <a href="https://m-zakeri.github.io/ARTA/" target="_blank"> m-zakeri.github.io/ARTA </a> </p>
+            <p></p>
+        </div>
+        <div class="offset-md-4"></div>
+    </div>
+{% endblock %}

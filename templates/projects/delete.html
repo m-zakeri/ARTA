@@ -1,0 +1,17 @@
+{% extends "base_template.html" %}
+{% block title %}Delete Project {{ object.name }}{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="offset-md-2"></div>
+        <div class="col-md-8">
+            <h2>Delete {{ object }}</h2>
+            <p>Are you sure?</p>
+            <form method="post" action="{% url 'projects_delete_view' object.id %}">
+                {% csrf_token %}
+                <button type="submit" value="Confirm" class="btn btn-danger">Yes</button>
+                <button class="btn btn-dark"><a class="btn-dark" href="{% url 'projects_list_view' %}">No</a></button>
+            </form>
+        </div>
+        <div class="offset-md-2"></div>
+    </div>
+{% endblock %}
